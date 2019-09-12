@@ -1,6 +1,6 @@
 import sys
 import re
-from os import mkdir
+from os import mkdir, path
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -18,7 +18,8 @@ def fetch_page(url) -> str:
     return req.content.decode(encoding='utf-8')
 
 def save_page(content: str, number: int, domain: str):
-    with open('{}/page-{}-[{}]'.format(OUT_DIR, number, domain), 'w') as file:
+    file_path = path.join(OUT_DIR, 'page-{}-[{}]'.format(number, domain))
+    with open(file_path, 'w') as file:
         file.write(content)
 
 def fetch_save_page(url: str, number: int):
@@ -31,7 +32,6 @@ def download(concurrency: int):
         mkdir(OUT_DIR)
     except FileExistsError:
         pass
-    
     urls = get_urls()
     with ThreadPoolExecutor(max_workers=concurrency-1) as executor:
         index = 1
