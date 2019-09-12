@@ -1,4 +1,5 @@
 import sys
+import re
 from os import mkdir
 from concurrent.futures import ThreadPoolExecutor
 
@@ -16,13 +17,14 @@ def fetch_page(url) -> str:
     req = requests.get(url)
     return req.content.decode(encoding='utf-8')
 
-def save_page(content: str, number: int):
-    with open('{}/page-{}'.format(OUT_DIR, number), 'w') as file:
+def save_page(content: str, number: int, domain: str):
+    with open('{}/page-{}-[{}]'.format(OUT_DIR, number, domain), 'w') as file:
         file.write(content)
 
 def fetch_save_page(url: str, number: int):
+    domain = re.search(r"\.(\w*)\.", url)
     content = fetch_page(url)
-    save_page(content, number)
+    save_page(content, number, domain.group(1))
 
 def download(concurrency: int):
     try:
