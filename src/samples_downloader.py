@@ -18,7 +18,7 @@ def fetch_page(url) -> str:
     return req.content.decode(encoding='utf-8')
 
 def save_page(content: str, number: int, domain: str):
-    file_path = path.join(OUT_DIR, 'page-{}-[{}]'.format(number, domain))
+    file_path = path.join(OUT_DIR, 'page-{}-[{}].html'.format(number, domain))
     with open(file_path, 'w') as file:
         file.write(content)
 
