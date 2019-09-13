@@ -13,7 +13,7 @@ def get_urls() -> [str]:
         # get each url and drop \n at the end
         return [url[:-1] for url in file.readlines()]
 
-def fetch_page(url) -> str:
+def fetch_page(url: str) -> str:
     req = requests.get(url)
     return req.content.decode(encoding='utf-8')
 
