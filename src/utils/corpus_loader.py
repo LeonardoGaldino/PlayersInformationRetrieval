@@ -1,8 +1,8 @@
 from os import listdir
 from os.path import isfile, join
 
-from src.common.corpus import Corpus
-from src.common.document import Document
+from common.corpus import Corpus
+from common.document import Document
 
 # Function responsible for loading corpus from a given folder.
 # You should input an absolute path to a folder containing all documents.

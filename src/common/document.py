@@ -1,8 +1,8 @@
 import requests
 import bs4
 
-from src.utils.http_status import OK
-from src.utils.tokenizer import tokenize
+from utils.http_status import OK
+from utils.tokenizer import tokenize
 
 class Document:
 

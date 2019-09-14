@@ -1,4 +1,4 @@
-from src.common.document import Document
+from common.document import Document
 
 class Corpus:
     def __init__(self, documents: [Document]):
