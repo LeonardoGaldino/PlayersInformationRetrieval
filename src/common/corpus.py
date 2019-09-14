@@ -5,9 +5,6 @@ class Corpus:
     def __init__(self, documents: [Document]):
         self.documents = documents
         self._build_corpus_vocabulary()
-        for token in self.vocabulary:
-            print(token, self.vocabulary[token].freq, len(self.vocabulary[token].docs))
-        print(len(self.vocabulary))
 
     def _build_corpus_vocabulary(self):
         self.vocabulary = {}
