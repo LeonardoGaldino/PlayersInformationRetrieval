@@ -1,5 +1,10 @@
 from common.document import Document
 
+from nltk.corpus import stopwords as nltk_stopwords
+import nltk
+
+nltk.download('stopwords')
+
 class Corpus:
 
     def __init__(self, documents: [Document]):
@@ -29,6 +34,19 @@ class Corpus:
                     self.vocabulary[lower_token].add_stats(freq, doc_index)
 
             doc_index += 1
+
+    def drop_stop_words(self, in_place: bool = True):
+        return_corpus = self
+        if not in_place:
+            return_corpus = Corpus(self.documents)
+        for stop_word in nltk_stopwords.words('english'):
+            try:
+                del return_corpus.vocabulary[stop_word]
+            except KeyError:
+                pass
+        return return_corpus
+
+
 
 
 # Classe responsável por representar as estatísticas de uma palavra dentro do corpus
