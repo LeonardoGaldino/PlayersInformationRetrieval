@@ -35,6 +35,9 @@ class Corpus:
 
             doc_index += 1
 
+    # Dropa stopwords em ingles definidas pelo package nltk
+    # Pode retornar um novo corpus cujo vocabulário não contém stopwords
+    # Ou pode retornar o mesmo corpus com o vocabulário sem stopwords
     def drop_stop_words(self, in_place: bool = True):
         return_corpus = self
         if not in_place:
@@ -45,8 +48,6 @@ class Corpus:
             except KeyError:
                 pass
         return return_corpus
-
-
 
 
 # Classe responsável por representar as estatísticas de uma palavra dentro do corpus
