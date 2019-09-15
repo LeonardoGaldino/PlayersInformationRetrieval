@@ -16,15 +16,17 @@ class Corpus:
                 # Frequência da palavra <token> no documento sendo analisado
                 freq = document.vocabulary[token]
 
+                lower_token = token.lower()
+
                 # Checa se o vocabulário do corpus já contém a palavra
-                stats = self.vocabulary.get(token, None)
+                stats = self.vocabulary.get(lower_token, None)
 
                 # Caso não, cria com a frequência do doc atual e adiciona seu índice
                 if stats is None:
-                    self.vocabulary[token] = CorpusTokenStats(freq, [doc_index])
+                    self.vocabulary[lower_token] = CorpusTokenStats(freq, [doc_index])
                 # Caso sim, adiciona a frequência do doc atual e seu índice
                 else:
-                    self.vocabulary[token].add_stats(freq, doc_index)
+                    self.vocabulary[lower_token].add_stats(freq, doc_index)
 
             doc_index += 1
 
