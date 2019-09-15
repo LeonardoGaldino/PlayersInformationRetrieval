@@ -6,8 +6,9 @@ from utils.tokenizer import tokenize
 
 class Document:
 
-    def __init__(self, raw_doc: str):
+    def __init__(self, raw_doc: str, is_instance: bool):
         self.raw_doc = raw_doc
+        self.is_instance = is_instance
         self._build_doc_vocabulary()
 
     # Função interna do documento responsável por transformar o documento cru (html com todas as tags e textos)
@@ -63,10 +64,10 @@ class Document:
 
     # Método apenas para auxiliar a construção de um Documento a partir de uma URL.
     @staticmethod
-    def load_from_url(url: str):
+    def load_from_url(url: str, is_instance: bool):
         req = requests.get(url)
         if req.status_code == OK:
-            return Document(req.content.decode('utf-8'))
+            return Document(req.content.decode('utf-8'), is_instance)
         return None
 
 
