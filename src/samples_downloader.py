@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 import requests
 
-IN_FILES = ['samples_urls', 'non_samples_urls']
-OUT_DIRS = ['samples_pages', 'non_samples_pages']
+IN_FILES = ['samples_urls', 'nonsamples_urls']
+OUT_DIRS = ['samples_pages', 'nonsamples_pages']
 
 def get_urls(instances: bool) -> [str]:
     in_index = 0 if instances else 1
