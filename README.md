@@ -78,6 +78,6 @@ Infos:
     Description List: https://www.w3schools.com/tags/tag_dl.asp
 
 Group:
-1. Bruno Vitorino (bvcl) - Crawler
+1. Bruno Vitorino (bvcl) - Crawling
 2. Leonardo Galdino (lcgm) - Classification
 3. Lucas Santana (lss5) - Extraction
