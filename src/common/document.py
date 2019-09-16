@@ -62,6 +62,15 @@ class Document:
             self.vocabulary[word] = word_freq + 1
 
 
+    def get_feature_vector(self, features: [str]) -> ([int], bool):
+        vector = [0]*len(features)
+        i = 0
+        for feature in features:
+            vector[i] = self.vocabulary.get(feature, 0)
+            i += 1
+
+        return (vector, self.is_instance)
+
     # Método apenas para auxiliar a construção de um Documento a partir de uma URL.
     @staticmethod
     def load_from_url(url: str, is_instance: bool):
