@@ -2,6 +2,7 @@ import os
 
 from utils.corpus_loader import load_corpus
 from classifier.features_extractors import MostFrequentWordsExtractor, DocFrequencyDifferenceExtractor, PlainFrequencyDifferenceExtractor, MixedFrequencyDifferenceExtractor
+from classifier.mlp import MLPDocumentClassifier
 
 # Por enquanto, apenas testa o corpus
 if __name__ == '__main__':
@@ -21,10 +22,11 @@ if __name__ == '__main__':
     selector3 = PlainFrequencyDifferenceExtractor(corpus)
     selector4 = MixedFrequencyDifferenceExtractor(corpus)
 
-    feature_words = selector.get_feature_words()
-    feature_words2 = selector2.get_feature_words()
-    feature_words3 = selector3.get_feature_words()
-    feature_words4 = selector4.get_feature_words()
+    n_features = 50
+    feature_words = selector.get_feature_words(n_features)
+    feature_words2 = selector2.get_feature_words(n_features)
+    feature_words3 = selector3.get_feature_words(n_features)
+    feature_words4 = selector4.get_feature_words(n_features)
 
     print("MostFrequentWordsExtractor: {}".format(feature_words))
     print()
@@ -35,23 +37,5 @@ if __name__ == '__main__':
     print("MixedFrequencyDifferenceExtractor: {}".format(feature_words4))
     print()
 
-    fv, y = corpus.documents[0].get_feature_vector(feature_words)
-    fv2, y2 = corpus.documents[0].get_feature_vector(feature_words2)
-    fv3, y3 = corpus.documents[0].get_feature_vector(feature_words3)
-    fv4, y4 = corpus.documents[0].get_feature_vector(feature_words4)
+    MLPDocumentClassifier(corpus).train([feature_words2, feature_words4])
 
-    _fv, _y = corpus.documents[95].get_feature_vector(feature_words)
-    _fv2, _y2 = corpus.documents[95].get_feature_vector(feature_words2)
-    _fv3, _y3 = corpus.documents[95].get_feature_vector(feature_words3)
-    _fv4, _y4 = corpus.documents[95].get_feature_vector(feature_words4)
-    print(fv, y)
-    print(fv2, y2)
-    print(fv3, y3)
-    print(fv4, y4)
-    print(_fv, _y)
-    print(_fv2, _y2)
-    print(_fv3, _y3)
-    print(_fv4, _y4)
-    print()
-    print(len(list(filter(lambda v: v.is_instance, corpus.documents))))
-    print(len(list(filter(lambda v: not v.is_instance, corpus.documents))))
