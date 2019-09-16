@@ -37,5 +37,12 @@ if __name__ == '__main__':
     print("MixedFrequencyDifferenceExtractor: {}".format(feature_words4))
     print()
 
+    print("Doc + Frequency DifferenceExtractors:")
     MLPDocumentClassifier(corpus).train([feature_words2, feature_words4])
+
+    print("DocDifferenceExtractor:")
+    MLPDocumentClassifier(corpus).train([feature_words2])
+
+    print("MixedFrequencyDifferenceExtractor:")
+    MLPDocumentClassifier(corpus).train([feature_words4])
 
