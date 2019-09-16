@@ -28,10 +28,9 @@ class Corpus:
 
                 # Caso não, cria com a frequência do doc atual e adiciona seu índice
                 if stats is None:
-                    self.vocabulary[lower_token] = CorpusTokenStats(freq, [doc_index])
-                # Caso sim, adiciona a frequência do doc atual e seu índice
-                else:
-                    self.vocabulary[lower_token].add_stats(freq, doc_index)
+                    self.vocabulary[lower_token] = CorpusTokenStats()
+
+                self.vocabulary[lower_token].add_stats(freq, doc_index, document.is_instance)
 
             doc_index += 1
 
@@ -42,11 +41,13 @@ class Corpus:
         return_corpus = self
         if not in_place:
             return_corpus = Corpus(self.documents)
+
         for stop_word in nltk_stopwords.words('english'):
             try:
                 del return_corpus.vocabulary[stop_word]
             except KeyError:
                 pass
+
         return return_corpus
 
 
@@ -54,10 +55,24 @@ class Corpus:
 # Atualmente guarda a frequência total de ocorrências daquela palavra e os documentos nos quais apareceu
 class CorpusTokenStats:
 
-    def __init__(self, freq: int = 0, docs: [int] = []):
-        self.freq = freq
-        self.docs = docs
+    def __init__(self):
+        self.data = {
+            True: {
+                'freq': 0,
+                'docs': [],
+            },
+            False: {
+                'freq': 0,
+                'docs': [],
+            },
+        }
 
-    def add_stats(self, freq: int, doc: int):
-        self.freq += freq
-        self.docs.append(doc)
+    def add_stats(self, freq: int, doc: int, is_instance: bool):
+        self.data[is_instance]['freq'] += freq
+        self.data[is_instance]['docs'].append(doc)
+
+    def get_total_freq(self) -> int:
+        return self.data[True]['freq'] + self.data[False]['freq']
+
+    def get_all_docs(self) -> [int]:
+        return self.data[True]['docs'] + self.data[False]['docs']
