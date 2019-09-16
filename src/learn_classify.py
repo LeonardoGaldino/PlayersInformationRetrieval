@@ -14,8 +14,7 @@ if __name__ == '__main__':
         occurrences = len(corpus.vocabulary[token].get_all_docs())
         total_docs = len(corpus.documents)
         if total_docs*.4 < occurrences:
-            pass
-            #print("{} = {}".format(token, occurrences))
+            print("{} = {}".format(token, occurrences))
 
     selector = MostFrequentWordsExtractor(corpus)
     selector2 = DocFrequencyDifferenceExtractor(corpus)
