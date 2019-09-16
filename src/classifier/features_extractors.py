@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Callable, List
 
 from common.corpus import Corpus
+from common.document import DocumentClass
 
 class FeatureExtractor(ABC):
     
@@ -32,7 +33,8 @@ class DocFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: abs(len(self.corpus.vocabulary[word].data[True]['docs'])-len(self.corpus.vocabulary[word].data[False]['docs'])))
+        return (lambda word: abs(len(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['docs'])
+            - len(self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['docs'])))
 
 
 class PlainFrequencyDifferenceExtractor(FeatureExtractor):
@@ -41,7 +43,8 @@ class PlainFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: abs(self.corpus.vocabulary[word].data[True]['freq']-self.corpus.vocabulary[word].data[False]['freq']))
+        return (lambda word: abs(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['freq']
+            - self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['freq']))
 
 class MixedFrequencyDifferenceExtractor(FeatureExtractor):
 
@@ -49,4 +52,4 @@ class MixedFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: (abs(len(self.corpus.vocabulary[word].data[True]['docs'])-len(self.corpus.vocabulary[word].data[False]['docs']))+1)*(abs(self.corpus.vocabulary[word].data[True]['freq']-self.corpus.vocabulary[word].data[False]['freq'])+1))
+        return (lambda word: (abs(len(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['docs'])-len(self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['docs']))+1)*(abs(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['freq']-self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['freq'])+1))

@@ -1,4 +1,4 @@
-from common.document import Document
+from common.document import Document, DocumentClass
 
 from nltk.corpus import stopwords as nltk_stopwords
 import nltk
@@ -57,22 +57,22 @@ class CorpusTokenStats:
 
     def __init__(self):
         self.data = {
-            True: {
+            DocumentClass.INSTANCE.value: {
                 'freq': 0,
                 'docs': [],
             },
-            False: {
+            DocumentClass.NON_INSTANCE.value: {
                 'freq': 0,
                 'docs': [],
             },
         }
 
-    def add_stats(self, freq: int, doc: int, is_instance: bool):
-        self.data[is_instance]['freq'] += freq
-        self.data[is_instance]['docs'].append(doc)
+    def add_stats(self, freq: int, doc: int, is_instance: DocumentClass):
+        self.data[is_instance.value]['freq'] += freq
+        self.data[is_instance.value]['docs'].append(doc)
 
     def get_total_freq(self) -> int:
-        return self.data[True]['freq'] + self.data[False]['freq']
+        return self.data[DocumentClass.INSTANCE.value]['freq'] + self.data[DocumentClass.NON_INSTANCE.value]['freq']
 
     def get_all_docs(self) -> [int]:
-        return self.data[True]['docs'] + self.data[False]['docs']
+        return self.data[DocumentClass.INSTANCE.value]['docs'] + self.data[DocumentClass.NON_INSTANCE.value]['docs']
