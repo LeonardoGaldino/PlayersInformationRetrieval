@@ -1,12 +1,19 @@
+import enum
+
 import requests
 import bs4
 
 from utils.http_status import OK
 from utils.tokenizer import tokenize
 
+class DocumentClass(enum.IntEnum):
+    NON_INSTANCE = 0
+    INSTANCE = 1
+    UNKNOWN = 2
+
 class Document:
 
-    def __init__(self, raw_doc: str, is_instance: bool):
+    def __init__(self, raw_doc: str, is_instance: DocumentClass):
         self.raw_doc = raw_doc
         self.is_instance = is_instance
         self._build_doc_vocabulary()
@@ -62,7 +69,7 @@ class Document:
             self.vocabulary[word] = word_freq + 1
 
 
-    def get_feature_vector(self, features: [str]) -> ([int], bool):
+    def get_feature_vector(self, features: [str]) -> ([int], DocumentClass):
         vector = [0]*len(features)
         i = 0
         for feature in features:
@@ -73,7 +80,7 @@ class Document:
 
     # Método apenas para auxiliar a construção de um Documento a partir de uma URL.
     @staticmethod
-    def load_from_url(url: str, is_instance: bool):
+    def load_from_url(url: str, is_instance: DocumentClass):
         req = requests.get(url)
         if req.status_code == OK:
             return Document(req.content.decode('utf-8'), is_instance)
