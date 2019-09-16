@@ -9,6 +9,7 @@ verify_ssl = true
 requests = "*"
 beautifulsoup4 = "*"
 nltk = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.6"
