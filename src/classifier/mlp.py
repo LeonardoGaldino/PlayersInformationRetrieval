@@ -44,7 +44,7 @@ class MLPDocumentClassifier:
         return (mat, acc, prec, recall, f1m)
 
 
-    def train(self, features: [[str]], corpus_train_size: float = .7):
+    def train(self, features: [[str]], corpus_train_size: float = .7, verbose: bool = False):
         start_time = dt.now()
         positive_docs = list(filter(lambda doc: doc.is_instance == DocumentClass.INSTANCE, self.corpus.documents))
         negative_docs = list(filter(lambda doc: not doc.is_instance == DocumentClass.INSTANCE, self.corpus.documents))
@@ -79,39 +79,60 @@ class MLPDocumentClassifier:
 
         for i in range(len(self.clf_data)):
             score = self.clf_data[i]['clf'].score(test_data[i][0], test_data[i][1])
-            print('Classifier {} individual accuracy: {}'.format(i+1, score))
+            if verbose:
+                print('Classifier {} individual accuracy: {}'.format(i+1, score))
 
-        preds = []
-        for i in range(len(self.clf_data)):
-            pred = self.clf_data[i]['clf'].predict_proba(test_data[i][0])
-            preds.append(pred)
+        final_preds = self.predict(test_docs)
+
+        if verbose:
+            err = 0
+            for i in range(len(final_preds)):
+                err += abs(final_preds[i] - test_data[0][1][i])
+            print("\nFinal stats:")
+            print("{} errors in {} samples".format(err, len(final_preds)))
+            mat, acc, prec, recall, f1m = self.compute_metrics(final_preds, test_data[0][1])
+            print("Confusion matrix: ")
+            print(mat[0])
+            print(mat[1])
+            print("Accuracy: {}".format(acc))
+            print("Precision: {}".format(prec))
+            print("Recall: {}".format(recall))
+            print("F1-Measure: {}".format(f1m))
+            print("")
+            end_time = dt.now()
+            train_duration = (end_time-start_time).total_seconds()
+            print("Training took {} seconds".format(train_duration))
+
+
+    def predict(self, docs: [Document]) -> [int]:
+        if self.clf_data is None:
+            raise AttributeError("Classificator not trained. Call train method before predict!")
         
-        final_preds = []
-        for i in range(len(test_data[0][0])):
-            best_pred, label = -1.0, -1
-            for j in range(len(preds)):
-                if preds[j][i][0] > best_pred:
-                    best_pred = preds[j][i][0]
-                    label = 0
-                if preds[j][i][1] > best_pred:
-                    best_pred = preds[j][i][1]
-                    label = 1
-            final_preds.append(label)
+        predicts = []
+        for i in range(len(self.clf_data)):
+            clf = self.clf_data[i]['clf']
+            features = self.clf_data[i]['features']
+            X, _ = self._get_vectors(features, docs, False, i)
 
-        err = 0
-        for i in range(len(final_preds)):
-            err += abs(final_preds[i] - test_data[0][1][i])
-        print("\nFinal stats:")
-        print("{} errors in {} samples".format(err, len(final_preds)))
-        mat, acc, prec, recall, f1m = self.compute_metrics(final_preds, test_data[0][1])
-        print("Confusion matrix: ")
-        print(mat[0])
-        print(mat[1])
-        print("Accuracy: {}".format(acc))
-        print("Precision: {}".format(prec))
-        print("Recall: {}".format(recall))
-        print("F1-Measure: {}".format(f1m))
-        print("")
-        end_time = dt.now()
-        train_duration = (end_time-start_time).total_seconds()
-        print("Training took {} seconds".format(train_duration))
+            predicts.append(clf.predict_proba(X))
+
+        final_preds = []
+        for i in range(len(docs)):
+            p, sum_prob_p = 0, 0.0
+            f, sum_prob_f = 0, 0.0
+            for j in range(len(predicts)):
+                sum_prob_p += predicts[j][i][1]
+                sum_prob_f += predicts[j][i][0]
+                if predicts[j][i][0] > predicts[j][i][1]:
+                    f += 1
+                else:
+                    p += 1
+            tie = p == f
+            if tie:
+                final_preds.append(1 if sum_prob_p > sum_prob_f else 0)
+            else:
+                final_preds.append(1 if p > f else 0)
+
+        return final_preds
+
+
