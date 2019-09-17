@@ -1,0 +1,1720 @@
+<!DOCTYPE html><html xml:lang="en" lang="en"><head><link rel="dns-prefetch" href="\pagead2.googlesyndication.com"><link rel="dns-prefetch" href="\google-analytics.com"><link rel="dns-prefetch" href="\static.fctables.com"><link rel="dns-prefetch" href="\connect.facebook.net" /><title>Matrix profil, bets and stats</title><meta name="Keywords" content="" /><meta charset="UTF-8"><meta property="fb:app_id" content="1007493516044195" /><meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" /><script async src="https://static.fctables.com/js/lang_en3.js"></script><link href="https://static.fctables.com/css/style66.min.css" rel="stylesheet" type="text/css" /><meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" /><link rel="canonical" href="https://www.fctables.com/profil/alexyx7/" /><meta name="robots" content="index,follow"/><link rel="shortcut icon" type="image/png" href="https://static.fctables.com/images/favicon_16x16.png" sizes="16x16"><link rel="shortcut icon" type="image/png" href="https://static.fctables.com/favicon.ico" sizes="32x32"><link rel="alternate" hreflang="x-default" href="https://www.fctables.com/profil/alexyx7/" /><link rel="alternate" hreflang="en" href="https://www.fctables.com/profil/alexyx7/" /><link rel="alternate" hreflang="pl" href="https://pl.fctables.com/profil/alexyx7/" /><link rel="alternate" hreflang="it" href="https://it.fctables.com/profil/alexyx7/" /><!-- IE8 HTML5 support --><!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85452329-1"></script>
+<script>
+    function createCookie(e,t,n){var r;if(n){var i=new Date;i.setTime(i.getTime()+24*n*60*60*1000),r="; expires="+i.toGMTString()}else r="";document.cookie=e+"="+t+r+"; path=/"}function readCookie(e){for(var t=e+"=",n=document.cookie.split(";"),r=0;r<n.length;r++){for(var i=n[r];" "===i.charAt(0);)i=i.substring(1,i.length);if(0===i.indexOf(t))return i.substring(t.length,i.length)}return null}
+        
+    var isOperaMini = (navigator.userAgent.indexOf('Opera Mini') > -1);
+    
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85452329-1');
+</script>
+   
+    </head><body>
+   
+    <div id="privacy-optin" style="width:100%;display:none;text-align:center;">
+        <div style="z-index:99998;text-align:center;position:fixed;width:100%;height:1000px;background:white;opacity:0.8">
+
+        </div>
+        <div style="width:100%;text-align:center;top:50px;position:fixed;z-index:99999;opacity:1;">
+            <div style="margin:auto;max-width:640px;width:90%;padding: 8px;">
+                <div class="panel panel-default" style="-webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);
+-moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);
+box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);">
+                    <div class="panel-heading">Cookies and privacy policy</div>
+                    <div class="panel-body">
+                        <div class="policy-info">
+                            This website makes use of cookies and similar technologies to improve your user experience, 
+                            analyse how the website is used and advertising that 
+                            might interest you. For more information click here: <a href="#" onclick="privacy_policy_get(this)">More info</a>
+                        </div>
+                        <div id="privacy_policy_html" style="text-align:left;overflow-y:scroll;max-height:200px;width:100%;"></div>
+                        <div onclick="privacy_optin_ok()" style="margin: 10px 0;" class="btn btn-lg btn-block btn-success">
+                            I Accept and I'am<br class="visible-xs" /> over 18 years old
+                        </div>
+
+                        If you dont accept our policy close our website.
+                    </div>
+                  </div>
+            </div>
+
+        </div>  
+    </div>
+    
+    <script>
+         
+        if(!readCookie('privacy_optin')){
+            getCountryCheckPrivaccy();  
+        }else{
+            if(!readCookie('country_id')){
+                getCountryCheckPrivaccy();
+            }
+            
+            show_ads_script();
+        }
+        
+        
+        
+        function getCountryCheckPrivaccy() {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+                   if (xmlhttp.status == 200) 
+                   {
+                       var ci = JSON.parse(xmlhttp.responseText);
+                  
+                       if(ci.country_id){
+                           createCookie('country_id',ci.country_id,14);
+                       }
+                       
+                       if(!readCookie('privacy_optin') && (ci.continent=='EU' || !ci.continent)){
+                           document.getElementById('privacy-optin').style.display="block";
+                       }else{
+                           createCookie('privacy_optin',1,3650);
+                           show_ads_script();
+                       }
+                    
+                   }
+                   else if (xmlhttp.status == 400) {
+                      
+                   }
+                   else {
+                       
+                   }
+                }
+            };
+
+            xmlhttp.open("GET", "/country.php", true);
+            xmlhttp.send();
+        }
+
+        function privacy_policy_get(obj){
+           
+            obj = $(obj);
+            $.ajax({
+                url: "/page_text/298/",
+                dataType: "html",
+                cache:true,
+                data: {},   
+                beforeSend: function(){
+                     obj.parent().parent().find('.policy-info').hide();
+                     $('#privacy_policy_html').html('<div class="text-center"><img src="/images/ajax-loader.gif" /></div>');
+                },
+                success: function(data) {
+                    $('#privacy_policy_html').html(data);
+                }
+            });
+            
+        }
+        
+        function privacy_optin_ok(){
+            createCookie('privacy_optin',1,728);
+            document.getElementById('privacy-optin').style.display="none";
+            show_ads_script();
+            
+        }
+        
+        function inIframe(){
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+        
+        function get_obj_size(o){
+          
+            var w = o.offsetWidth;
+            
+            return {
+                'w': w,
+                'h': o.offsetHeight
+            }
+        }
+
+
+
+        function show_ads_script(){
+            if(inIframe())
+                return;
+            /*
+            var ci = readCookie('country_code');
+            
+            if(!isOperaMini && (ci && (ci=='ke' || ci=='ng' || ci=='tz')) || !ci){
+ 
+                document.addEventListener("DOMContentLoaded", function(event) { 
+                    get_ads();
+                });
+                
+                
+                return;
+            }
+           */
+            
+            show_ga();
+       
+            //requestNonPersonalizedAds=0;
+         //  (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
+
+        }
+        
+        var adsense_loaded = false; 
+        function show_ga(){
+            
+    
+            var adsense_loaded = true; 
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            document.body.appendChild(s);
+            
+            (adsbygoogle = window.adsbygoogle || []).push({
+                 google_ad_client: "ca-pub-5329504519553130",
+                 enable_page_level_ads: true
+            });
+    
+        }
+    </script>
+    
+<div id="fb-root"></div>
+<script>
+         
+function elemIsHidden(el) {
+    var style = window.getComputedStyle(el);
+    return (style.display === 'none')
+}   
+
+function mobile_menu2(obj){    
+    var m=document.getElementById('menu');
+    if(elemIsHidden(m)){
+        m.style.display='block';
+        
+    }else{
+        m.style.display='none';
+    }
+}    
+
+
+    (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.10&appId=1007493516044195";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+<div id="main"><div class="page_top_parent"><div class="page_top"><div class="box-width"><div class="pull-left"><div class="mobile-menu" onclick="mobile_menu2(this)"><div class="m-icon"></div></div><a href="/" title="FcTables"><img src="/images/logo_fctables2.jpg" width="179" height="38" alt="FcTables" class="logo hidden-xs" /></a><a href="/" title="FcTables"><img src="/images/fctables-logo-mobile2.jpg" width="90" height="35" alt="FcTables" class="logo visible-xs pull-left" /></a></div><div class="pull-right" ><form role="search" class="navbar-left app-search pull-left hidden-xs" action="/search/" method="POST"><input type="text" placeholder="Search..." id="search_top" class="form-control find_team" name="query" data-link="1" data-limit="3" data-type=""><button type="submit" class="fa fa-search"></button></form><div class="user-logged-menu" onclick="user_menu(this)"><img src="/images/no-player-image.jpg" class="img-circle user-avatar" alt="user avatar" /><div class="user_login">Sign In</div></div><div id="user_menu_box" class="notifications-container top-box-menu hide"><div class="title">
+    User menu
+</div>
+
+<form class="form" action="/user/login/" method="POST">
+
+        
+    <input type="hidden" name="login_action" value="1" />
+
+    <div class="text-center">
+        <a href="/user/login_facebook/"><img class="login_facebook" src="/images/login_facebook.jpg" alt="login via facebook" /></a>
+    </div>
+
+    <div class="login_or"></div>
+
+    <div class="form-group">
+         <input type="text" class="form-control" placeholder="Login/Email" name="login_username" />
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" name="login_password" />
+    </div>
+
+    <div class="" onclick="$(this).find('input').prop('checked', !$(this).find('input').prop('checked'))">
+        <input type="checkbox" name="user_remeber" checked="checked" value="1" /> Autologin
+    </div>
+
+    <button class="btn btn-block btn-md btn-success" type="submit" name="submit" value="1"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</button>
+    <a class="btn btn-block btn-sm btn-primary" href="/user/register/" style="margin-top:20px;"><i class="fa fa-user-plus" aria-hidden="true"></i> Create new free account</a>
+
+    <a href="/user/password_forget/">I forgot my password</a>
+</form></div><div id="user_menu_login_box" class="notifications-container top-box-menu hide"><div class="title">User menu</div><div style="padding:10px 10px 0 10px;"><div class="tip-stat-box"><a href="/tipster/balance/"><div class="ic"><img src="/images/tip-wallet2.jpg" alt="cash"></div><div class="val"><div class="big-val" id="user-stack-top"><img src="/images/ajax-loader.gif" alt="cash loader" /></div></div></a></div></div><div class="notifications-list"><ul><li><a href="/profil/"><i class="fa fa-user" aria-hidden="true"></i> My profile</a></li><li><a href="/tipster/"><i class="fa fa-fire" aria-hidden="true"></i> Add new bets</a></li><li><a href="/tipster/bets/"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Users bets</a></li><li><a href="/tipster/my_bets/"><i class="fa fa-list" aria-hidden="true"></i> My bets</a></li><li><a href="/tipster/balance/"><i class="fa fa-money" aria-hidden="true"></i> My balance</a></li><li><a href="/tipster/ranking/"><i class="fa fa-list-ol" aria-hidden="true"></i> Ranking</a></li><li><a href="/tipster/favorites/"><i class="fa fa-star-o" aria-hidden="true"></i> Favorites punters</a></li><li><a href="/user/user_data/"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit data</a></li><li class="line-top"><a href="/user/logout/"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li></ul></div></div><div data-toggle="tooltip" title="Settings" class="change_setting pull-left visible-xs mobile_search" onclick="mobile_search(this)"><a href="#" class="" aria-expanded="true"><i class="fa fa-search"></i></a></div><div data-toggle="tooltip" title="Settings" class="change_setting pull-left" onclick="top_menu_click(this,'#settings_box')"><div id="settings_box" class="notifications-container hide top-box-menu"><div class="title">Settings</div><div class="notifications-list"><ul><li onclick="change_language_box(this)"><div class="row"><div class="col-xs-2 i"><img id="lang-image" src="/images/blank.gif" class="flag flag-gb" /></div><div class="col-xs-10 n">Change language</div></div></li><li onclick="change_timezone_form(this);"><div class="row"><div class="col-xs-2 i"><i class="fa fa-clock-o" aria-hidden="true"></i></div><div class="col-xs-10 n">Change time zone</div></div></li><li  onclick="notification_manage(this)"><div class="row"><div class="col-xs-2 i"><i class="fa fa-bell" aria-hidden="true"></i></div><div class="col-xs-10 n">Notification settings</div></div></li><li onclick="odds_format(this)"><div class="row"><div class="col-xs-2 i"><i class="fa fa-arrows-alt" aria-hidden="true"></i></div><div class="col-xs-10 n">Odds format</div></div></li></ul></div></div><a href="#" class="dropdown-toggle waves-effect waves-light" aria-expanded="true"><i class="fa fa-cog" aria-hidden="true"></i> <i class="fa fa-caret-down"></i></a></div><div id="lang_box" class="notifications-container hide"><div class="title">Change language</div><div class="notifications-list"><ul><li><a href="https://www.fctables.com/profil/alexyx7/"><div class="row"><div class="col-xs-2 i"><img src="/images/blank.gif" class="flag flag-gb" alt="English" /></div><div class="col-xs-10 n">English</div></div></a></li><li><a href="https://pl.fctables.com/profil/alexyx7/"><div class="row"><div class="col-xs-2 i"><img src="/images/blank.gif" class="flag flag-pl" alt="Polski (Polska)" /></div><div class="col-xs-10 n">Polski (Polska)</div></div></a></li><li><a href="https://it.fctables.com/profil/alexyx7/"><div class="row"><div class="col-xs-2 i"><img src="/images/blank.gif" class="flag flag-it" alt="Italian (Italy)" /></div><div class="col-xs-10 n">Italian (Italy)</div></div></a></li></ul></div></div><div class="notifications pull-left" data-notification="1" onclick="top_menu_click(this,'#not_box')"><div id="not_box" class="notifications-container hide top-box-menu"><div style="padding:0 10px;"><div class="row" id="push-not-container"><div class="col-xs-8"><strong>Push Notifications</strong></div><div class="col-xs-4" onclick="push_notification.push_notification_click($(this).find('input'))"><input type="checkbox" id="push-subs-button" data-toggle="toggle" data-onstyle="success"></div></div><div class="row" id="predictions-not-container"><div class="col-xs-8"><strong>Predictions Notifications</strong></div><div class="col-xs-4" onclick="push_notification.predictions_notification_click($(this).find('input'))"><input type="checkbox" id="predictions-subs-button" data-toggle="toggle" data-onstyle="success"></div></div><button onclick="notification_manage(this)" type="button" class="btn btn-block btn-md btn-info waves-effect waves-light" style="border-radius:0;"><i class="fa fa-cog" aria-hidden="true"></i> Manage notifications</button></div><div class="title">Notifications<div id="not_count_box" class="pull-right hide"><span class="label label-xs label-default"><span></span> new</span></div></div><div class="notifications-list"><ul></ul><div class="alert alert-info text-center">There is no new notifications</div></div></div><a href="#" class="waves-effect waves-light" aria-expanded="true"><i class="fa fa-bell" ></i><i class="fa fa-caret-down"></i> <span class="badge badge-xs badge-danger hide" id="not_counter">0</span></a></div></div></div><div style="margin:0;position:relative;top: -1px" class="pull-right visible-lg visible-md"><a href="https://www.facebook.com/fctablescom/"><img width="43" height="43" src="/images/facebook-icon.png" alt="Facebook profil" /></a></div><div style="margin:0;position:relative;top: -1px" class="pull-right visible-lg visible-md"><a href="https://twitter.com/FcTables_com"><img src="/images/twitter.jpg" width="43" height="43" alt="Twitter profil" /></a></div></div></div><div class="menu" id="menu"><div class="box-width"><ul><li><a href="/"><div class="fa fa-home main-icon" aria-hidden="true"></div> Home</a></li><li ><a href="/premium_tips/"><div class="fa fa-fighter-jet main-icon" aria-hidden="true"></div> Premium tips</a><span class="badge badge-xs badge-danger hidden-xs" style="position: relative;top:-50px;left:40px;">BETA</span></li><li ><a href="/predictions/"><div class="fa fa-dot-circle-o main-icon" aria-hidden="true"></div> Free predictions</a><span class="badge badge-xs badge-danger hidden-xs" style="position: relative;top:-50px;left:40px;">Ver 1.8</span></li><li class="visible-sm visible-xs"><a href="/todays-match-predictions/"><div class="fa fa-circle-thin main-icon" aria-hidden="true"></div> Today's match predictions</a> <span class="badge badge-xs badge-danger hidden-xs" style="position: relative;top:-50px;left:40px;">New</span></li><li class="visible-sm visible-xs"><a href="https://statsdream.com"><img src="https://static.fctables.com/images/statsdream-logo.png" width="18" /> StatsDream.com</a></li><li class="has-submenu"><a href="/stats/"><div class="fa fa-line-chart main-icon" aria-hidden="true"></div> Stats</a><ul class="submenu megamenu teams_menu"><li><ul id="popular_templates_menu"><li><span><a href="/stats/">All statistics</a></span></li><li class="truncate"><a href="/todays-match-predictions/"> Today's match predictions</a>&nbsp;<span class="badge badge-xs badge-danger"><i class="glyphicon glyphicon-star"></i></span></li><li class="truncate"><a href="/ranking-tfi/">Ranking TFI (Team form index)</a></li><li class="truncate"><a href="/stats/bet-actual-profit/">Teams with highest profits</a> <span class="badge badge-xs badge-danger" ><i class="glyphicon glyphicon-star"></i></span></li><li class="truncate"><a href="/stats/h2h-series/">Streaks stats</a></li><li class="truncate"><a href="/stats/under_over_15/">Best teams Under/Over 1.5</a></li><li class="truncate"><a href="/stats/under_over_25/">Best teams Under/Over 2.5</a></li><li class="truncate"><a href="/stats/under_over_35/">Best teams Under/Over 3.5</a></li><li class="truncate"><a href="/stats/leagues-over-25/">Leagues with over 2.5 goals</a></li><li class="truncate"><a href="/stats/leagues-under-25/">Leagues with under 2.5 goals</a></li><li class="truncate"><a href="/stats/leagues-over-35/">Leagues with over 3.5 goals</a></li><li class="truncate"><a href="/stats/leagues-under-35/">Leagues with under 3.5 goals</a></li><li class="truncate"><a href="/stats/both_teams_to_score/">Best teams Both teams to score</a></li><li class="truncate"><a href="/stats/asian_handicap/">Best teams for asian handicap</a></li><li class="truncate"><a href="/stats/corners/">Best teams corners</a></li><li class="truncate"><a href="/stats/no_lost/">Teams series without defeit</a></li><li class="truncate"><a href="/stats/no_win/">Teams series without win</a></li><li class="truncate"><a href="/stats/ht_ft/">Best teams HT/FT Half-time/Full-time</a></li></ul></li></ul></li><li class="has-submenu"><a href="/tipster/"><div class="fa fa-fire main-icon" aria-hidden="true"></div> Tipsters</a><ul class="submenu megamenu tipster-top-menu"><li><ul><li><a href="/tipster/"><i class="fa fa-fire" aria-hidden="true"></i> Add new bets</a></li><li><a href="/tipster/bets/"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Users bets</a></li><li><a href="/tipster/my_bets/"><i class="fa fa-list" aria-hidden="true"></i> My bets</a></li><li><a href="/tipster/balance/"><i class="fa fa-money" aria-hidden="true"></i> My balance</a></li><li><a href="/tipster/ranking/"><i class="fa fa-list-ol" aria-hidden="true"></i> Ranking</a></li><li><a href="/tipster/top_tips/"><i class="fa fa-users" aria-hidden="true"></i> Users tips</a></li><li><a href="/tipster/favorites/"><i class="fa fa-star-o" aria-hidden="true"></i> Favorites punters</a></li><li><a href="https://www.fctables.com/blog/about-tipster-contest/"><i class="fa fa-info-circle" aria-hidden="true"></i> About tipster and rules</a></li></ul></li></ul></li><li class="has-submenu menu-livescore"><a href="/livescore/"><div class="fa fa-clock-o main-icon"></div> Livescore & H2H</a><ul class="submenu megamenu small"><li><ul><li><span class="upper">The most important matches</span></li><li class="row"><a href="/livescore/real-cartagena-bogota-fc-g1598099/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568682000">01:00</span> <div class="flag flag-co"></div> CO 2</span><span class="col-xs-4 text-right truncate">Real Cartagena <img src="https://static.fctables.com/upload/images/18x18/p3/p3adn57b1215a3fe61/real-cartagena.gif" width="18" /></span><span class="col-xs-1 text-center score">2:1</span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/a7/a7o6x57b1219fd0f36/bogota-fc.gif" /> Bogota FC</span></a></li><li class="row"><a href="/livescore/inter-slavia-prague-g1726378/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568739300">16:55</span><img src="https://static.fctables.com/upload/images/18x18/lw/lwasc57b4e73b58a73/uefa_champions_league.png" width="18" height="18" alt="" /> Cha</span><span class="col-xs-4 text-right truncate popular">Inter <img src="https://static.fctables.com/upload/images/18x18/0l/0l2cb57b477c86244d/inter.png" width="18" /></span><span class="col-xs-1 text-center score"></span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/fc/fckmi57b477c276e8c/slavia-prague.png" /> Slavia Prague</span></a></li><li class="row"><a href="/livescore/ssc-napoli-liverpool-g1726368/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568746800">19:00</span><img src="https://static.fctables.com/upload/images/18x18/lw/lwasc57b4e73b58a73/uefa_champions_league.png" width="18" height="18" alt="" /> Cha</span><span class="col-xs-4 text-right truncate popular">Napoli <img src="https://static.fctables.com/upload/images/18x18/sz/szbym58bbf5e0bc315/napoli-logo.png" width="18" /></span><span class="col-xs-1 text-center score"></span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/c6/c6a3f57b477c7297f0/liverpool.png" /> Liverpool</span></a></li><li class="row"><a href="/livescore/borussia-dortmund-barcelona-g1726385/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568746800">19:00</span><img src="https://static.fctables.com/upload/images/18x18/lw/lwasc57b4e73b58a73/uefa_champions_league.png" width="18" height="18" alt="" /> Cha</span><span class="col-xs-4 text-right truncate popular">Borussia Dortmund <img src="https://static.fctables.com/upload/images/18x18/q9/q9ri157b477b7414da/borussia-dortmund.png" width="18" /></span><span class="col-xs-1 text-center score"></span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/ki/kimpd57b477c767ca2/barcelona.png" /> Barcelona</span></a></li><li class="row"><a href="/livescore/chelsea-valencia-g1726399/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568746800">19:00</span><img src="https://static.fctables.com/upload/images/18x18/lw/lwasc57b4e73b58a73/uefa_champions_league.png" width="18" height="18" alt="" /> Cha</span><span class="col-xs-4 text-right truncate popular">Chelsea <img src="https://static.fctables.com/upload/images/18x18/fq/fqmny57b477c75ba65/chelsea.png" width="18" /></span><span class="col-xs-1 text-center score"></span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/wx/wxxs957b477c6dd91e/valencia.png" /> Valencia</span></a></li><li class="row"><a href="/livescore/ajax-lille-g1726400/"><span class="col-xs-3"><span style="padding:0;" class="text-left date_unix" data-unixtime="1568746800">19:00</span><img src="https://static.fctables.com/upload/images/18x18/lw/lwasc57b4e73b58a73/uefa_champions_league.png" width="18" height="18" alt="" /> Cha</span><span class="col-xs-4 text-right truncate popular">Ajax <img src="https://static.fctables.com/upload/images/18x18/k9/k9zj057b477b686f13/ajax.png" width="18" /></span><span class="col-xs-1 text-center score"></span><span class="col-xs-4 truncate"><img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/j6/j6py357b477c92ff0c/lille.png" /> Lille</span></a></li></ul></li></ul></li><li class="has-submenu"><a href="/tables/"><div class="fa fa-table main-icon" aria-hidden="true"></div> Tables</a><ul class="submenu megamenu teams_menu"><li><ul id="popular_templates_menu"><li><span>Popular leagues</span></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/zz/zzs12578de0617d997/premier-league-logo.png" width="20" height="20" alt="Premier League" /> <a href="/england/premier-league/" title="Table Premier League">Table Premier League</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/tk/tke55578e1f7b6af31/laliga-v-1200x1200.png" width="20" height="20" alt="La Liga" /> <a href="/spain/liga-bbva/" title="Table La Liga">Table La Liga</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/ae/ae4iu57b4bdc36378d/germany-1.png" width="20" height="20" alt="1. Bundesliga" /> <a href="/germany/1-bundesliga/" title="Table 1. Bundesliga">Table 1. Bundesliga</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/cu/cuj7g578ca22bc0cf1/italian-serie-a.jpg" width="20" height="20" alt="Serie A" /> <a href="/italy/serie-a/" title="Table Serie A">Table Serie A</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/p7/p7tnu57b4bdb3bcb7b/france-1.png" width="20" height="20" alt="Ligue 1" /> <a href="/france/ligue-1/" title="Table Ligue 1">Table Ligue 1</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/cm/cm4hx57b4c06cc5d68/russia-1.png" width="20" height="20" alt="Premier League" /> <a href="/russia/premier-league/" title="Table Premier League">Table Premier League</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/36/36naz578ca2f94314e/usa-major-league-soccer.gif" width="20" height="20" alt="Major League Soccer" /> <a href="/usa/major-league-soccer/" title="Table Major League Soccer">Table Major League Soccer</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/2t/2t8sw57b4a5e404b63/netherlands-1.png" width="20" height="20" alt="Eredivisie" /> <a href="/netherlands/eredivisie/" title="Table Eredivisie">Table Eredivisie</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/p9/p98c257b4c061d8e76/portugal-1.png" width="20" height="20" alt="Liga ZON Sagres" /> <a href="/portugal/liga-zon-sagres/" title="Table Liga ZON Sagres">Table Liga ZON Sagres</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/l0/l0kgf57b4a5f9b3994/turkey-1.png" width="20" height="20" alt="Super Lig" /> <a href="/turkey/super-lig/" title="Table Super Lig">Table Super Lig</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/v9/v9anv57b4bce078a8a/argentina-1.png" width="20" height="20" alt="Torneo Inicial" /> <a href="/argentina/torneo-inicial/" title="Table Torneo Inicial">Table Torneo Inicial</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/jt/jtkr857b4bd0ebaeed/brazil-1.png" width="20" height="20" alt="Serie A" /> <a href="/brazil/serie-a/" title="Table Serie A">Table Serie A</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/kc/kcs1257b4bd3f59828/china-1.png" width="20" height="20" alt="Super League" /> <a href="/china/super-league/" title="Table Super League">Table Super League</a></li><li class="truncate"><img src="https://static.fctables.com/upload/images/20x20/1r/1rkfa578ddf198d6a4/24o11th.png" width="20" height="20" alt="Championship" /> <a href="/england/championship/" title="Table Championship">Table Championship</a></li></ul></li><li class="your_templates hide"><ul><li><span class="upper">Your leagues</span></li></ul></li></ul></li><li class="has-submenu menu_h2h"><a href="/h2h/"><div class="fa fa-clone main-icon" aria-hidden="true"></div> H2H</a><ul class="submenu megamenu"><li><ul><li><span class="upper">Today's matches</span></li><li class="row"><a href="/h2h/inter/slavia-prague/"><span class="col-xs-1 text-left date_unix popular" data-unixtime="1568739300">16:55</span><span class="col-xs-4 text-right truncate">Inter</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/0l/0l2cb57b477c86244d/inter.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/fc/fckmi57b477c276e8c/slavia-prague.png" /> </span><span class="col-xs-4 truncate">Slavia Prague</span></a></li><li class="row"><a href="/h2h/liverpool/ssc-napoli/"><span class="col-xs-1 text-left date_unix popular" data-unixtime="1568746800">19:00</span><span class="col-xs-4 text-right truncate">Napoli</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/sz/szbym58bbf5e0bc315/napoli-logo.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/c6/c6a3f57b477c7297f0/liverpool.png" /> </span><span class="col-xs-4 truncate">Liverpool</span></a></li><li class="row"><a href="/h2h/barcelona/borussia-dortmund/"><span class="col-xs-1 text-left date_unix popular" data-unixtime="1568746800">19:00</span><span class="col-xs-4 text-right truncate">Borussia Dortmund</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/q9/q9ri157b477b7414da/borussia-dortmund.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/ki/kimpd57b477c767ca2/barcelona.png" /> </span><span class="col-xs-4 truncate">Barcelona</span></a></li><li class="row"><a href="/h2h/chelsea/valencia/"><span class="col-xs-1 text-left date_unix popular" data-unixtime="1568746800">19:00</span><span class="col-xs-4 text-right truncate">Chelsea</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/fq/fqmny57b477c75ba65/chelsea.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/wx/wxxs957b477c6dd91e/valencia.png" /> </span><span class="col-xs-4 truncate">Valencia</span></a></li><li class="row"><a href="/h2h/ajax/lille/"><span class="col-xs-1 text-left date_unix popular" data-unixtime="1568746800">19:00</span><span class="col-xs-4 text-right truncate">Ajax</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/k9/k9zj057b477b686f13/ajax.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/j6/j6py357b477c92ff0c/lille.png" /> </span><span class="col-xs-4 truncate">Lille</span></a></li></ul></li><li><ul><li><span class="upper">Tomorrow's matches</span></li><li class="row"><a href="/h2h/alianza-petrolera/deportivo-cali/"><span class="col-xs-1 text-left date_unix" data-unixtime="1568766600">00:30</span><span class="col-xs-4 text-right truncate">Deportivo Cali</span><span class="col-xs-3 text-center"><img src="https://static.fctables.com/upload/images/18x18/xs/xsmnl57b477bd1ad98/deportivo-cali.png" width="18" height="18" /> <img width="18" height="18" src="https://static.fctables.com/upload/images/18x18/06/069xg57b477bd5c85e/alianza-petrolera.png" /> </span><span class="col-xs-4 truncate">Alianza Petrolera</span></a></li></ul></li></ul></li><li class="has-submenu teams-menu"><a href="/teams/"><div class="fa fa-folder main-icon"></div> teams</a><ul class="submenu megamenu teams_menu"><li><ul><li><span class="upper">Popular teams</span></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/7y/7yzg857b477b364bd2/manchester-united.png" width="20" height="20" alt="Manchester United" /> <a href="/teams/manchester-united-189577/">Manchester United stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/v2/v2m5r57b477c7443ee/arsenal.png" width="20" height="20" alt="Arsenal" /> <a href="/teams/arsenal-180231/">Arsenal stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/zt/ztba857b477c75027d/real-madrid.png" width="20" height="20" alt="Real Madrid" /> <a href="/teams/real-madrid-192583/">Real Madrid stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/fq/fqmny57b477c75ba65/chelsea.png" width="20" height="20" alt="Chelsea" /> <a href="/teams/chelsea-182666/">Chelsea stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/ki/kimpd57b477c767ca2/barcelona.png" width="20" height="20" alt="Barcelona" /> <a href="/teams/barcelona-181013/">Barcelona stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/c6/c6a3f57b477c7297f0/liverpool.png" width="20" height="20" alt="Liverpool" /> <a href="/teams/liverpool-189071/">Liverpool stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/yv/yvyxj57b477ac395ae/bayern-munich.png" width="20" height="20" alt="Bayern Munich" /> <a href="/teams/bayern-munich-181104/">Bayern Munich stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/ti/tiq2j57b477c873db0/manchester-city.png" width="20" height="20" alt="Manchester City" /> <a href="/teams/manchester-city-189570/">Manchester City stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/u8/u8gid57b477b4bd706/ac-milan.png" width="20" height="20" alt="AC Milan" /> <a href="/teams/ac-milan-179125/">AC Milan stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/ze/zezox59f71449853bf/juventus-logo-new.png" width="20" height="20" alt="Juventus" /> <a href="/teams/juventus-187903/">Juventus stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/zg/zgdfx57b477ac49647/atletico-madrid.png" width="20" height="20" alt="Atletico Madrid" /> <a href="/teams/atletico-madrid-180603/">Atletico Madrid stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/7c/7clgr57b477b677537/paris-saint-germain.png" width="20" height="20" alt="PSG" /> <a href="/teams/paris-saint-germain-191585/">PSG stats</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/0l/0l2cb57b477c86244d/inter.png" width="20" height="20" alt="Inter" /> <a href="/teams/inter-187444/">Inter stats</a></li></ul></li><li class="your_teams hide"><ul><li><span class="upper">Your teams</span></li></ul></li></ul></li><li class="has-submenu menu-players"><a href="/players/"><div class="fa fa-users main-icon"></div> Players</a><ul class="submenu megamenu teams_menu"><li><ul><li><span class="upper">Most popular players</span></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/na/na34p58c995bc48c0a/cristiano-ronaldo.png" width="20" height="20" alt="Cristiano Ronaldo" /> <a href="/players/cristiano_ronaldo-222119/">Cristiano Ronaldo</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/e0/e03m358c995c05bae7/l-messi.png" width="20" height="20" alt="Lionel Messi" /> <a href="/players/lionel_messi-271592/">Lionel Messi</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/ny/nyzpd58c995c06ef78/neymar.png" width="20" height="20" alt="Neymar" /> <a href="/players/neymar-291274/">Neymar</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/v6/v6vbr58a234c88ad72/mesut-oezil.png" width="20" height="20" alt="Mesut Oezil" /> <a href="/players/mesut_oezil-283992/">Mesut Oezil</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/cn/cnxe458c995bc73b67/g-bale.png" width="20" height="20" alt="Gareth Bale" /> <a href="/players/gareth_bale-240689/">Gareth Bale</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/zf/zfmbx58a234d21037f/wayne-rooney.png" width="20" height="20" alt="Wayne Rooney" /> <a href="/players/wayne_rooney-327021/">Wayne Rooney</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/9z/9z4up58c995c04ab1d/l-suarez.png" width="20" height="20" alt="Luis Suarez" /> <a href="/players/luis_suarez-273528/">Luis Suarez</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/pu/pu89l58a234d061016/zlatan-ibrahimovic.png" width="20" height="20" alt="Zlatan Ibrahimovic" /> <a href="/players/zlatan_ibrahimovic-330572/">Zlatan Ibrahimovic</a></li><li class="text-left"><img src="https://static.fctables.com/upload/images/20x20/js/js29m58a2350d283cb/sergio-aguero.png" width="20" height="20" alt="Sergio Aguero" /> <a href="/players/sergio-aguero-312350/">Sergio Aguero</a></li></ul></li></ul></li><li class="has-submenu"><a href="/rankings/"><div class="fa fa-list-ol main-icon"></div> Rankings</a><ul class="submenu megamenu small"><li><ul><li><span class="upper">Best players and teams</span></li><li><a href="/fifa-rankings/" title="Fifa rankings LIVE">Fifa rankings LIVE</a></li><li><a href="/players/top-scorers-player-world/">Top scorers players</a></li><li><a href="/players/top-assists-world/">Players with the most assists</a></li><li><a href="/players/top-cards-world/">Most brutal players</a></li><li><a href="/players/top-goalkeepers-world/">Best goalkeepers</a></li><li><a href="/top_football_players/">Most valuable players in football</a></li></ul></li></ul></li><li class="has-submenu"><a href="/fixtures/"><i class="fa fa-calendar main-icon" aria-hidden="true"></i> Fixtures</a></li><li class="menu-webmaster"><a href="https://www.fctables.com/widgets/"><div class="fa fa-share-alt-square main-icon"></div> Webmaster</a></li><li class="has-submenu visible-xs"><a href="/contact/"><div class="fa fa-envelope-o main-icon"></div>Contact</a><br /></li><li class="has-submenu hidden-xs"><a href="#"><div class="fa fa-arrow-down main-icon"></div> Other</a><ul class="submenu"><li><a href="/blog/"><div class="fa fa-newspaper-o main-icon" aria-hidden="true"></div> Blog</a></li><li><a href="/contact/">Contact</a></li><li><a href="/links/">Links</a></li><li><a href="/blog/about-us/">About Us</a></li></ul></li></ul></div><div class="clearfix"></div></div><div class="main-content"><div class="clearfix visible-xs"></div> <div class="box-width"><div class="lang-info-add"></div><div id="premium-tips-a" class="android-app row" style="display:none;background:#efe5d1;padding: 6px 0;border:1px #f5c76c solid;margin-top:2px;margin-bottom:10px;"><div class="col-xs-2 text-center" style="font-size:20px;font-weight:bold;" onclick="premium_tips_close(this)">X</div><div class="col-xs-10" style="font-size:12px;"><a href="/premium_tips/" style="color:#333333;text-decoration:underline;font-size:18px;">Check our new section with <strong>Premium tips</strong></a></div></div>
+                 <script>
+                 function premium_tips_close(obj){
+                     document.getElementById('premium-tips-a').style.display="none";
+                     window.localStorage.setItem('premium-tips-a',1);     
+                 }
+
+                 if( !window.localStorage.getItem('premium-tips-a') ){
+                     document.getElementById('premium-tips-a').style.display="block"
+                 } 
+                 </script>
+                
+<div class="tipster-banner">
+     
+
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client="ca-pub-5329504519553130"
+         data-ad-slot="3887004899"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  
+</div>
+<div id="tipster-profil">
+    
+    
+<div class="main-image-profil">
+
+        
+    <img alt="" class="main-image-profil-bg" src="https://static.fctables.com/images/tipster-profil-bg.jpg" />
+    <div class="avatar">
+        <img src="https://static.fctables.com/upload/images2/200x200/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="" />
+    </div>    
+    <h1><img src="https://static.fctables.com/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> Matrix</h1>
+    
+    <div class="buttons">
+        <button class="follow btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart-o" aria-hidden="true"></i> Follow</button>
+    </div>
+</div>
+<div class="tipster-stats">
+    <div class="tipster-stat"><i class="fa fa-globe" aria-hidden="true"></i> 2424<div class="n">Bets</div></div>
+    <div class="tipster-stat"><i class="fa fa-check-circle" aria-hidden="true"></i> 1218<div class="n">Correct bets</div></div>
+    <div class="tipster-stat"><i class="fa fa-bullseye" aria-hidden="true"></i> 20<div class="n">Active bets</div></div>
+    <div class="tipster-stat"><i class="fa fa-heart" aria-hidden="true"></i> 3<div class="n">Followed</div></div>
+    <div class="tipster-stat"><i class="fa fa-heart-o" aria-hidden="true"></i> 42<div class="n">Followers</div></div>
+
+    <div class="clearfix"></div>
+</div>
+
+<div class="profil-left">
+    <div class="panel panel-default">
+        <div class="panel-heading">User stats</div>
+        <div class="panel-body">
+            <div class="profil-chart">
+                <canvas id="profil-chart-yield" style="width:100%;"></canvas>
+            </div>
+            
+             <div class="profil-stats this-month">
+                
+                <div class="profit-stat green"><i class="fa fa-exchange" aria-hidden="true"></i> <span class="sv">53.60%</span><div class="n">Yield sep 2019</div></div>
+                <div class="profit-stat"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="sv">31</span><div class="n">Bets sep 2019</div></div>
+                
+                <div class="profit-stat"><i class="fa fa-check-circle-o" aria-hidden="true"></i> <span class="sv">71%</span><div class="n">Accurency sep 2019</div></div>
+            
+            </div>
+            
+            <div class="profil-stats">
+                
+                <div class="profit-stat red"><i class="fa fa-exchange" aria-hidden="true"></i> <span class="sv">-12.56%</span><div class="n">Yield overall</div></div>
+                <div class="profit-stat"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span class="sv">2424</span><div class="n">Bets overall</div></div>
+                
+                <div class="profit-stat"><i class="fa fa-check-circle-o" aria-hidden="true"></i> <span class="sv">50%</span><div class="n">Accurency overall</div></div>
+            
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+    
+    <h2>Users bets</h2>
+    <div class="profil-right without-avatar" id="coupons">
+            
+<div class="coupon" data-id="78569">
+    <div class="cheader">
+        <div class="id">#78569</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 3.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 4.50 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.50</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/unterhaching-chemnitzer-fc-g1672678/">Unterhaching vs Chemnitzer FC</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> yesterday</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.50</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="78568">
+    <div class="cheader">
+        <div class="id">#78568</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 3.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 5.49 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.83</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/lens-chateauroux-g1651286/">Lens vs Chateauroux</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> yesterday</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.44</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/hitchin-town-afc-rushden-diamonds-g1687947/">Hitchin Town vs AFC Rushden & Diamonds</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> yesterday</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.27</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="78416">
+    <div class="cheader">
+        <div class="id">#78416</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 50.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 110.00 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 2.20</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/bodoe-glimt-stabaek-g1581008/">Bodoe/Glimt vs Stabaek</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.13</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/minnesota-united-real-salt-lake-g1590891/">Minnesota United vs Real Salt Lake</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.26</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/lyngby-fc-midtjylland-g1646054/">Lyngby vs FC Midtjylland</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 2</div>
+            <div class="o">1.55</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">1</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="78413">
+    <div class="cheader">
+        <div class="id">#78413</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 300.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 432.00 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.44</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/saint-etienne-toulouse-g1650873/">Saint-Etienne vs Toulouse</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.16</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/alaves-sevilla-g1674769/">Alaves vs Sevilla</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 15 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.24</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="78219">
+    <div class="cheader">
+        <div class="id">#78219</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 5.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 9.75 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.95</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/skoevde-aik-lindome-gif-g1585253/">Skoevde AIK vs Lindome GIF</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 14 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.14</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/aberdeen-stjohnstone-g1659763/">Aberdeen vs St.Johnstone</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 14 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.13</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/ross-county-st-mirren-g1659768/">Ross County vs St. Mirren</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 14 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.30</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/chelmsford-chippenham-town-g1674372/">Chelmsford vs Chippenham Town</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 14 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.16</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="78135">
+    <div class="cheader">
+        <div class="id">#78135</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 12.30 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.23</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/bohemian-fc-waterford-united-g1581182/">Bohemian FC vs Waterford United</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 september 2019</div>
+            </div>
+			
+            <div class="v">Under/Over 1.5 - Over 1.5</div>
+            <div class="o">1.23</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="78134">
+    <div class="cheader">
+        <div class="id">#78134</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 1.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 1.62 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.62</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/bohemian-fc-waterford-united-g1581182/">Bohemian FC vs Waterford United</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.62</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="78023">
+    <div class="cheader">
+        <div class="id">#78023</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 2.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 2.84 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.42</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/lille-angers-g1650874/">Lille vs Angers</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.21</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/alianza-fc1-cd-aguila-g1700521/">Alianza FC vs CD Aguila</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.17</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77908">
+    <div class="cheader">
+        <div class="id">#77908</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 2.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 3.56 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.78</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/deportivo-saprissa-deportiva-san-carlos-g1666037/">Deportivo Saprissa vs Deportiva San Carlos</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 12 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.78</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77840">
+    <div class="cheader">
+        <div class="id">#77840</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 2.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 2.80 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.40</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/osijek-b-nk-kustosija-g1675521/">Osijek B vs NK Kustosija</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 11 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.40</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77762">
+    <div class="cheader">
+        <div class="id">#77762</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 1.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 2.69 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 2.69</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/tns-newtown-g1666332/">TNS vs Newtown</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 10 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.20</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/turkmenistan-south-korea-g1691464/">Turkmenistan vs South Korea</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 10 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 2</div>
+            <div class="o">1.20</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/afghanistan-bangladesh-g1691648/">Afghanistan vs Bangladesh</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 10 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.52</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/jordan-paraguay-g1727005/">Jordan vs Paraguay</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 10 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.23</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77698">
+    <div class="cheader">
+        <div class="id">#77698</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 200.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 280.00 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.40</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/russia-kazakhstan-g1576932/">Russia vs Kazakhstan</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.17</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/scotland-belgium-g1576934/">Scotland vs Belgium</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">Under/Over 1.5 - Over 1.5</div>
+            <div class="o">1.20</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77697">
+    <div class="cheader">
+        <div class="id">#77697</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 20.40 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 2.04</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/russia-kazakhstan-g1576932/">Russia vs Kazakhstan</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.17</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/san-marino-cyprus-g1576933/">San Marino vs Cyprus</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 2</div>
+            <div class="o">1.09</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/deportivo-pereira-cortulua-g1598109/">Deportivo Pereira vs Cortulua</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.23</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/sportivo-italiano-excursionistas-g1699619/">Sportivo Italiano vs Excursionistas</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 10 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.30</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77628">
+    <div class="cheader">
+        <div class="id">#77628</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 8.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 32.48 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 4.06</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/russia-kazakhstan-g1576932/">Russia vs Kazakhstan</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.17</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/scotland-belgium-g1576934/">Scotland vs Belgium</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 2</div>
+            <div class="o">1.40</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/azerbaijan-croatia-g1577120/">Azerbaijan vs Croatia</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 2</div>
+            <div class="o">1.26</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/deportivo-pereira-cortulua-g1598109/">Deportivo Pereira vs Cortulua</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 9 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.96</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77588">
+    <div class="cheader">
+        <div class="id">#77588</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 59.10 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 5.91</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/finland-italy-g1576883/">Finland vs Italy</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 8 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.17</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/grecia1-deportivo-saprissa-g1666057/">Grecia vs Deportivo Saprissa</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 8 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">5.05</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77353">
+    <div class="cheader">
+        <div class="id">#77353</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 17.60 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.76</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/alfreton-curzon-g1673908/">Alfreton vs Curzon</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.18</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/sportfreunde-lotte-oberhausen-g1676957/">Sportfreunde Lotte vs Oberhausen</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.27</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/tus-haltern-fc-koeln-ii-g1676962/">TuS Haltern vs FC Koeln II</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - X2</div>
+            <div class="o">1.17</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77350">
+    <div class="cheader">
+        <div class="id">#77350</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 17.00 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.70</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/bayern-alzenau-mainz-05-ii-g1676249/">Bayern Alzenau vs Mainz 05 II</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.29</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/fortuna-koeln-bonner-sc-g1676959/">Fortuna Koeln vs Bonner SC</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.32</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77335">
+    <div class="cheader">
+        <div class="id">#77335</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 10.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 15.30 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.53</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/ifk-oestersund-taefteaa-ik-g1591739/">IFK Oestersund vs Taefteaa IK</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.25</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/ifk-luleaa-sandviks-ik-g1591746/">IFK Luleaa vs Sandviks IK</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">1.10</div>
+            
+        </div>
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/corinthians-ceara-g1625681/">Corinthians vs Ceara</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 7 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.11</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix visible-lg visible-md"></div><div class="coupon" data-id="77226">
+    <div class="cheader">
+        <div class="id">#77226</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 1.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 1.29 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 1.29</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-success">+</label> <a href="/livescore/borussia-moenchengladbach-ii-schalke-04-ii-g1676960/">Borussia Moenchengladbach II vs Schalke 04 II</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 6 september 2019</div>
+            </div>
+			
+            <div class="v">Double Chance - 1X</div>
+            <div class="o">1.29</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-success">+</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="coupon" data-id="77222">
+    <div class="cheader">
+        <div class="id">#77222</div>
+        <div class="info">
+            <div class="stack" title="Stack" data-toggle="tooltip"><i class="fa fa-bullseye" aria-hidden="true"></i><span> Stack:</span> 1.00 FC</div>
+            <div class="to_win" title="To win" data-toggle="tooltip"><i class="fa fa-trophy" aria-hidden="true"></i><span> To win:</span> 2.01 FC</div>
+            <div class="odd" title="Odd" data-toggle="tooltip"><i class="fa fa-line-chart" aria-hidden="true"></i><span> Odd:</span> 2.01</div>
+        </div>
+     
+    </div>
+    <div class="clearfix"></div>
+  
+    <div class="user"> 
+        <div class="avatar">
+            <a href="/profil/alexyx7/">                <img src="https://static.fctables.com/upload/images/85x65/6y/6yp1t5a25ad55c45a3/alexyx7.jpg" alt="Matrix" />
+            </a>
+            
+        </div>
+        <div class="login"><img src="/images/blank.gif" class="flag flag-ci" alt="Ivory Coast" /> <a href="/profil/alexyx7/">Matrix</a></div>
+        <div class="btn btn-sm btn-info user_follow_485" onclick="user_follow(this)" data-user-id="485"><i class="fa fa-heart hidden-xs" aria-hidden="true"></i> Follow</div>
+        <div class="yield">Yield: 34%, Accuracy: 62%</div>
+    </div>
+   
+    
+    <div class="coupon-items">
+                <div class="game">
+            <div class="g">
+                <label class="label label-danger">-</label> <a href="/livescore/sc-weiz-kalsdorf-g1666229/">SC Weiz vs Kalsdorf</a><div class="d"><i class="fa fa-clock-o" aria-hidden="true"></i> 6 september 2019</div>
+            </div>
+			
+            <div class="v">1X2 - 1</div>
+            <div class="o">2.01</div>
+            
+        </div>
+          
+    </div>
+	
+    <div class="coupon-footer">
+        <label class="label label-danger">-</label>        <div class="likes">
+            <div class="like" data-type="yes" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="l_ok">0</span></div>
+            <div class="like" data-type="no" onclick="coupon_like(this)"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="l_no_ok">0</span></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+      
+    </div>
+    
+    <div class="clearfix"></div>
+            <div id="load-more-btn" class="btn btn-block btn-sm btn-info" onclick="refresh_coupons(coupons_page,485)">Load more</div>
+        
+    <div style="height:40px;"></div>
+    
+<style>
+    .coupon{background: white;border:1px #e1e6e9 solid;width:49.5%;float:left;margin-bottom:10px;}
+    .coupon:nth-child(even){float:right;}
+    .coupon .user{float:left;width:30%;text-align:center;border-right: 1px dashed #a9a9a9;margin:0;}
+    .coupon .avatar img{border-radius:40px;min-width:40px;min-height:40px;width:100%;max-width:80px;max-height:80px;border:1px #e1e6e9 solid;}
+    .coupon .login{font-weight: bold;font-size: 14px;}
+    .coupon .yield{}
+    .coupon .coupon-items{float:right;width:70%;}
+    .without-avatar .coupon-items{width: 100%;float:none;}
+    .without-avatar .coupon .user{display:none;}
+    .coupon .game{width:100%;border-bottom: 1px dashed #eeeeee;padding: 0 5px;}
+    .coupon .game .g{width:100%;}
+    .coupon .game .v{float:left;width:80%;font-size: 12px;font-weight:bold;}
+    .coupon .game .o{float:right;font-size: 12px;font-weight:bold;}
+    .coupon .game .d{float:right;font-size: 12px;}
+
+    .coupon-footer{clear:both;background:#f5f5f5;border-top: 1px #dddddd solid;height:40px;line-height:40px;width:100%;padding: 0 10px;}
+    .coupon-footer .fa{} 
+    .coupon-footer .label{float:left;margin-top: 10px;}
+    
+    .coupon .info{float:right;}
+    .coupon .info div{display:inline-block;margin-left: 20px;}
+    .coupon .info div:first-child{margin-left:0;}
+    .coupon .info .odd{font-weight:bold;}
+    .coupon .id{float:left;}
+
+    .coupon .likes{width:100%;font-size:14px;text-align:right;}
+    .coupon .like{width:20%;max-width:50px;display:inline-block;cursor:pointer;}
+    .coupon .like:hover{color:#3bafda;}
+
+    .coupon .cheader{clear:both;background:#f5f5f5;border-top: 1px #dddddd solid;height:40px;line-height:40px;width:100%;padding: 0 10px;}
+
+    @media screen and (max-width: 960px) {
+        .coupon .info{font-size:12px;margin-left:10px;}
+        .coupon .i{float:left;font-size:12px;}
+        .coupon .game{font-size:12px;}
+    }
+
+    @media screen and (max-width: 720px) {
+        .coupon .avatar img{border-radius:30px;min-width:30px;min-height:30px;width:100%;max-width:50px;max-height:50px;}
+    
+        .coupon{width:100%;float:none;}
+        .coupon .yield{font-size:12px;}
+        .coupon .info span{display:none;}
+        .coupon .user{width:25%;}
+    }
+
+</style>
+
+
+    
+</div>
+
+<div class="clearfix"></div>
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700');
+
+    .change-image{position: absolute;color:#dddddd;border:2px #dddddd solid;padding: 8px;margin: 20px 0 0 20px;cursor:pointer;}
+    .change-image:hover{border-color: white;color:white;}
+    
+    #tipster-profil{font-family:'Open Sans';max-width:1280px;width:100%;}
+    .tipster-banner{display:none;}
+    .main-image-profil{position: relative;border: 5px #e3e3e3 solid;border-radius: 4px;border-bottom:0;}
+    .main-image-profil .main-image-profil-bg{width:100%;height: 300px;}
+    .main-image-profil .avatar{position: absolute;border: 4px #dddddd solid;border-radius:6px;top:130px;left: 20px;}
+    .main-image-profil .avatar img{width: 100%;min-width:200px;}
+    .main-image-profil h1{position: absolute;font-size: 32px;text-transform: uppercase;background: url('/images/bg-name.png');padding: 4px;top: 220px;left: 230px;color:white;}
+    .main-image-profil .buttons{position: absolute; top: 160px;right: 40px;}
+    
+    .profil-chart{float:left;width:65%;}
+    .profil-stats{float:left;width:15%;margin-left:1%;}
+    
+    .profil-stats .profit-stat{margin-bottom: 14px;font-size: 30px;background: #ededed;border-radius: 6px;padding: 0 20px;}
+    .profil-stats .profit-stat.green{background:#21d83f;color:white;}
+    .profil-stats .profit-stat.red{background:#d82521;color:white;}
+    .profil-stats .profit-stat .n{font-size: 14px;text-align: right;text-transform: uppercase;}
+    .profil-stats .profit-stat .sv{float:right;}
+    
+    .tipster-stats{background: white;min-height:50px;width:100%;text-align: right;margin-bottom: 20px;border: 5px #e3e3e3 solid;border-top:0;}
+    .tipster-stats .tipster-stat{display:inline-block;color:#555;padding: 0 10px;font-size:18px;color:#0c0c0c;border-right: 1px #eee solid;}
+    .tipster-stats .tipster-stat .n{display:block;text-align: center;font-size: 12px;color:#c4c5c6;line-height:14px;margin-bottom:4px;}
+    .tipster-stats .tipster-stat .fa{color:#7b7b7b;}
+    
+    .follow{font-size:30px;text-transform: uppercase;border:0;padding: 0 30px;font-weight:bold;min-width:280px;border-radius:3px;}
+
+    
+    @media screen and (min-width: 1800px) {
+        #tipster-profil{float:left;width:100%;max-width:1540px !important;}
+        .tipster-banner{float:right;margin-right: 5px;display:block;}
+    }
+    
+    @media screen and (min-width: 1750px) {
+        #tipster-profil{max-width:1400px !important;}
+        .tipster-banner{display:block;float:right;}
+    }
+    
+    @media screen and (max-width: 1280px) {
+        .profil-stats .profit-stat{font-size: 22px;}
+        .profil-stats .profit-stat .n{font-size: 12px;}
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .profil-chart{float:left;width:70%;}
+        .profil-chart{float:none;width:100%;}
+        
+        .profil-stats{float:left;width:45%;margin: 20px 0 0 2.5%;}
+    }
+    
+    @media screen and (max-width: 720px) {
+        .profil-chart{
+            float:none; width:100%;
+        }
+        .profil-stats{float:none;width:100%;margin:20px 0 0 0;}
+        .profil-stats .profit-stat .n{font-size: 18px;}
+    }
+    
+    @media screen and (max-width: 520px) {
+        
+        .change-image{margin-top:20px;right:10px;}
+        .tipster-stats{}
+        .main-image-profil .avatar{top: 40px}
+        .tipster-stats .tipster-stat{
+            float:left;
+            width:50%;
+            text-align:center;
+        }
+        
+        .main-image-profil .main-image-profil-bg{width:100%;height: 200px;}
+        .main-image-profil h1{
+            position: relative;
+            margin-top:40px;
+            font-size: 32px;
+            text-transform: uppercase;
+            background: #555;
+            padding: 4px;
+            top:auto;
+            left:auto;
+            color:white;
+        }
+        
+        .main-image-profil .buttons{position: relative;top:auto;left:0;width:100%;max-width:100%;}
+        .follow{width:100%;}
+    
+   
+    }
+    
+</style>    
+
+
+
+<script>
+document.addEventListener("site-build", function(event) { 
+    
+    var elem = $('#load-more-btn');
+    $(window).scroll(function(){
+        if(elem.is(':visible') && checkVisible(elem.get(0)) && !loading_coupons) {
+           refresh_coupons(coupons_page, 485);
+        } 
+    });
+});
+
+</script>
+
+
+<script src="https://static.fctables.com/js/chartjs-2.7.js"></script>
+
+<script>
+
+
+        var config = {
+            type: 'line',
+            data: {
+                labels: ['2018-09-18','2018-09-19','2018-09-20','2018-09-21','2018-09-22','2018-09-23','2018-09-24','2018-09-27','2018-09-29','2018-10-01','2018-10-02','2018-10-03','2018-10-04','2018-10-07','2018-10-08','2018-10-10','2018-10-12','2018-10-13','2018-10-14','2018-10-17','2018-10-30','2018-11-01','2018-11-03','2018-11-04','2018-11-05','2018-11-06','2018-12-02','2018-12-04','2018-12-05','2018-12-07','2018-12-08','2018-12-09','2018-12-10','2018-12-11','2018-12-12','2018-12-13','2018-12-15','2018-12-21','2019-01-01','2019-01-02','2019-01-03','2019-01-04','2019-01-05','2019-01-06','2019-01-07','2019-01-08','2019-01-10','2019-01-11','2019-01-12','2019-01-13','2019-01-14','2019-01-15','2019-01-17','2019-01-18','2019-01-19','2019-01-20','2019-01-22','2019-01-30','2019-01-31','2019-02-01','2019-02-03','2019-02-04','2019-02-05','2019-02-08','2019-02-10','2019-02-14','2019-02-15','2019-02-16','2019-02-17','2019-02-18','2019-02-19','2019-03-01','2019-03-03','2019-03-04','2019-03-05','2019-03-06','2019-03-07','2019-03-08','2019-03-09','2019-03-10','2019-03-11','2019-03-12','2019-03-13','2019-03-14','2019-03-15','2019-03-16','2019-03-17','2019-03-18','2019-03-19','2019-03-20','2019-03-21','2019-03-22','2019-03-24','2019-03-25','2019-03-26','2019-03-28','2019-03-31','2019-04-01','2019-04-02','2019-04-03','2019-04-04','2019-04-06','2019-04-07','2019-04-10','2019-04-12','2019-04-13','2019-04-25','2019-04-26','2019-04-27','2019-04-28','2019-04-29','2019-04-30','2019-05-02','2019-05-03','2019-05-05','2019-05-07','2019-05-09','2019-05-10','2019-05-11','2019-05-12','2019-05-13','2019-05-14','2019-05-15','2019-05-16','2019-05-17','2019-05-18','2019-05-19','2019-05-21','2019-05-22','2019-05-23','2019-05-25','2019-05-27','2019-05-30','2019-05-31','2019-06-02','2019-06-07','2019-06-09','2019-06-16','2019-06-21','2019-06-29','2019-06-30','2019-07-04','2019-07-05','2019-07-11','2019-07-15','2019-07-19','2019-07-29','2019-07-30','2019-08-04','2019-08-09','2019-08-10','2019-08-12','2019-08-14','2019-08-23','2019-08-24','2019-08-25','2019-08-26','2019-08-30','2019-09-01','2019-09-02','2019-09-04','2019-09-05','2019-09-06','2019-09-07','2019-09-08','2019-09-09','2019-09-10','2019-09-11','2019-09-12','2019-09-13','2019-09-15','2019-09-16'],
+                datasets: [{
+                    label: "Daily Yield",
+                    data: [39,3,-1,-5,3,-12,-4,2,-12,-15,-13,-15,-15,-16,-19,-19,-18,-18,-19,-18,-18,-18,-23,-21,-22,-23,-25,-20,-20,-18,-19,-21,-22,-22,-23,-23,-24,-24,-22,-23,-21,-20,-20,-20,-17,-19,-19,-20,-19,-19,-18,-20,-19,-18,-19,-19,-17,-16,-16,-17,-16,-17,-17,-17,-17,-18,-17,-17,-18,-18,-18,-19,-20,-19,-19,-21,-20,-19,-19,-19,-17,-17,-18,-17,-15,-15,-14,-15,-16,-16,-17,-17,-17,-17,-17,-18,-18,-18,-17,-17,-17,-17,-17,-17,-17,-17,-17,-17,-18,-18,-18,-18,-18,-18,-18,-18,-18,-17,-17,-17,-17,-17,-18,-18,-18,-18,-18,-17,-17,-17,-17,-17,-17,-17,-17,-17,-17,-17,-16,-18,-18,-18,-18,-19,-18,-18,-19,-19,-19,-19,-19,-19,-20,-19,-19,-19,-19,-19,-17,-17,-17,-16,-16,-17,-17,-16,-16,-16,-16,-16,-14,-13],
+                    fill: true,
+               
+                    borderColor: 'rgba(54, 162, 235,0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Yield chart'
+                },
+                tooltips: {
+                    mode: 'label',
+                    callbacks: {
+                        // beforeTitle: function() {
+                        //     return '...beforeTitle';
+                        // },
+                        // afterTitle: function() {
+                        //     return '...afterTitle';
+                        // },
+                        // beforeBody: function() {
+                        //     return '...beforeBody';
+                        // },
+                        // afterBody: function() {
+                        //     return '...afterBody';
+                        // },
+                        // beforeFooter: function() {
+                        //     return '...beforeFooter';
+                        // },
+                        // footer: function() {
+                        //     return 'Footer';
+                        // },
+                        // afterFooter: function() {
+                        //     return '...afterFooter';
+                        // },
+                    }
+                },
+                hover: {
+                    mode: 'dataset'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            show: true,
+                            labelString: 'Month'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            show: true,
+                            labelString: 'Value'
+                        },
+                       
+                    }]
+                },
+                legend:{
+                    display: false
+                }
+            }
+        };
+
+  
+
+            var ctx = document.getElementById("profil-chart-yield").getContext("2d");
+            var c = new Chart(ctx, config);
+         
+
+</script>
+
+    
+
+
+<script src="https://static.fctables.com/js/coupons.js"></script>  </div></div><div class="scroll_up" onclick="scroll_up(this)"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></div><link href="https://static.fctables.com/css/all5.min.css" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'" /><script async type="text/javascript" src="https://static.fctables.com/js/all39.min.js"></script><script async type="text/javascript" src="https://static.fctables.com/js/script74.min.js"></script><script>var language_id=2;var timezone_server = '0';
+            //mailing popup check
+            document.addEventListener("site-build", function(event) { 
+                setTimeout(function(){
+                    check_predictions_mailing(true);
+                },35000);
+            });
+</script><div class="text-center"><div style="margin: 20px 0 20px 0"><div class="clearfix text-center" style="margin-bottom:150px;"><div class="panel panel-default" style="-webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);-moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.3);font-size:18px;"><div class="panel-body text-center"><a href="https://statsdream.com/basketball/" title="Basketball statistics"><img style="width:100%;max-width:320px;" src="/images/basketball-stats.jpg" alt="Basketball stats" /></a><br />Check our new website with basketball statistics</div></div></div><div class="text-center">
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-5329504519553130"
+     data-ad-slot="2422003652"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    
+    </div></div><div style="height:50px;"></div></div><div class="mpb"></div><div class="page_footer">Copyright © 2019 <a href="/" title="FcTables">FcTables</a>. All rights reserved, <a href="/contact/" title="Contact Fctables">Contact</a>. <a href="https://www.fctables.com/blog/cookies/">Cookies and privacy policy</a><br />Our partners:<br /><div class="row text-left"><div class="col-xs-6 col-sm-4 col-lg-offset-1 col-lg-3"><a href="http://www.surebety.pl/nasze-typy" target="_blank">Free tips</a><br /><a href="/links/">Links</a></div><div class="col-xs-6 col-sm-4 col-lg-4"><a href="https://statsdream.com">StatsDream.com</a><br /></div><div class="col-xs-12 col-sm-4 col-lg-4"></div></div></div><div class="modal fade" id="modal_mailing" tabindex="-1s" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" onclick="modal_mailing_close(this)" data-dismiss="modal" aria-hidden="true">×</button><h3 class="modal-title">Predictions notifications</h3></div><div class="modal-body text-center" style="padding:5px;"><img src="/images/ajax-loader.gif" alt="cash loader" /></div><div class="modal-footer"><button class="btn btn-danger btn-sm" onclick="modal_mailing_close(this)">Close</button></div></div></div></div><div class="modal fade" id="modal_mailing" tabindex="-1s" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" onclick="modal_mailing_close(this)" data-dismiss="modal" aria-hidden="true">×</button><h3 class="modal-title">Predictions notifications</h3></div><div class="modal-body text-center" style="padding:5px;"><img src="/images/ajax-loader.gif" alt="cash loader" /></div><div class="modal-footer"><button class="btn btn-danger btn-sm" onclick="modal_mailing_close(this)">Close</button></div></div></div></div></body></html>
