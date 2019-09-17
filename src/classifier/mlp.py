@@ -1,3 +1,5 @@
+from datetime import datetime as dt
+
 from sklearn.neural_network import MLPClassifier
 from sklearn.utils import shuffle
 from sklearn import preprocessing
@@ -43,6 +45,7 @@ class MLPDocumentClassifier:
 
 
     def train(self, features: [[str]], corpus_train_size: float = .7):
+        start_time = dt.now()
         positive_docs = list(filter(lambda doc: doc.is_instance == DocumentClass.INSTANCE, self.corpus.documents))
         negative_docs = list(filter(lambda doc: not doc.is_instance == DocumentClass.INSTANCE, self.corpus.documents))
 
@@ -109,9 +112,6 @@ class MLPDocumentClassifier:
         print("Recall: {}".format(recall))
         print("F1-Measure: {}".format(f1m))
         print("")
-
-
-
-
-
-
+        end_time = dt.now()
+        train_duration = (end_time-start_time).total_seconds()
+        print("Training took {} seconds".format(train_duration))
