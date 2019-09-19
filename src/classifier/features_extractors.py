@@ -1,14 +1,19 @@
 from abc import ABC, abstractmethod
 from typing import Callable, List
 
+import nltk
+
+
 from common.corpus import Corpus
 from common.document import DocumentClass
+
 
 class FeatureExtractor(ABC):
     
     def __init__(self, corpus: Corpus):
         super().__init__()
         self.corpus = corpus
+        self.stemmer = nltk.stem.porter.PorterStemmer()
 
     @abstractmethod
     def _word_cmp_key(self) -> Callable[[str], int]:
@@ -24,7 +29,7 @@ class MostFrequentWordsExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: self.corpus.vocabulary[word].get_total_freq())
+        return (lambda word: self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).get_total_freq())
 
 
 class DocFrequencyDifferenceExtractor(FeatureExtractor):
@@ -33,8 +38,8 @@ class DocFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: abs(len(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['docs'])
-            - len(self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['docs'])))
+        return (lambda word: abs(len(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.INSTANCE.value]['docs'])
+            - len(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.NON_INSTANCE.value]['docs'])))
 
 
 class PlainFrequencyDifferenceExtractor(FeatureExtractor):
@@ -43,8 +48,8 @@ class PlainFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: abs(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['freq']
-            - self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['freq']))
+        return (lambda word: abs(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.INSTANCE.value]['freq']
+            - self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.NON_INSTANCE.value]['freq']))
 
 class MixedFrequencyDifferenceExtractor(FeatureExtractor):
 
@@ -52,4 +57,4 @@ class MixedFrequencyDifferenceExtractor(FeatureExtractor):
         super().__init__(corpus)
 
     def _word_cmp_key(self) -> Callable[[str], int]:
-        return (lambda word: (abs(len(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['docs'])-len(self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['docs']))+1)*(abs(self.corpus.vocabulary[word].data[DocumentClass.INSTANCE.value]['freq']-self.corpus.vocabulary[word].data[DocumentClass.NON_INSTANCE.value]['freq'])+1))
+        return (lambda word: (abs(len(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.INSTANCE.value]['docs'])-len(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.NON_INSTANCE.value]['docs']))+1)*(abs(self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.INSTANCE.value]['freq']-self.corpus.vocabulary_get(self.stemmer.stem(word).lower()).data[DocumentClass.NON_INSTANCE.value]['freq'])+1))
