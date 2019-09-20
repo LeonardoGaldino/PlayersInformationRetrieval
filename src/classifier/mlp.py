@@ -6,6 +6,76 @@ from sklearn import preprocessing
 
 from common.corpus import Corpus
 from common.document import Document, DocumentClass
+from classifier.classifier import Classifier
+from classifier.features_extractors import FeatureExtractor
+from classifier.utils import compute_metrics, doc_class_to_int, int_to_doc_class, get_vectors, get_vectors_scaler
+
+class MLPDocClassifier(Classifier):
+
+    def __init__(self, feature_extractor: FeatureExtractor):
+        super().__init__(feature_extractor)
+        self.trained = False
+
+    def train(self, docs: [Document], verbose: bool = False):
+        start_time = dt.now()
+
+        positive_docs = list(filter(lambda doc: doc.is_instance == DocumentClass.INSTANCE, docs))
+        negative_docs = list(filter(lambda doc: not doc.is_instance == DocumentClass.INSTANCE, docs))
+
+        total_positive = int(len(positive_docs)*.7)
+        total_negative = int(len(negative_docs)*.7)
+
+        train_docs = positive_docs[:total_positive] + negative_docs[:total_negative]
+        train_docs = shuffle(train_docs)
+
+        test_docs = positive_docs[total_positive:] + negative_docs[total_negative:]
+        test_docs = shuffle(test_docs)
+
+        self.features = self.feature_extractor.get_feature_words(num_features=50)
+        self.clf = MLPClassifier(hidden_layer_sizes=(len(self.features), len(self.features)), activation='relu', solver='adam', max_iter=1000)
+
+        X, y, self.scaler = get_vectors_scaler(self.features, train_docs)
+
+        self.clf.fit(X, y)
+
+        final_preds = self._internal_predict(test_docs)
+        final_preds = doc_class_to_int(final_preds)
+        correct_preds = doc_class_to_int([test_doc.is_instance for test_doc in test_docs])
+
+        if verbose:
+            print("\nFinal stats:")
+            mat, acc, prec, recall, f1m = compute_metrics(final_preds, correct_preds)
+            print("Confusion matrix: ")
+            print(mat[0])
+            print(mat[1])
+            print("Accuracy: {}".format(acc))
+            print("Precision: {}".format(prec))
+            print("Recall: {}".format(recall))
+            print("F1-Measure: {}".format(f1m))
+            print("")
+            end_time = dt.now()
+            train_duration = (end_time-start_time).total_seconds()
+            print("Training took {} seconds".format(train_duration))
+        self.trained = True
+
+    def predict(self, docs: [Document]) -> [DocumentClass]:
+        if not self.trained:
+            raise AssertionError("MLP not trained yet. Call train before predict.")
+
+        X, _ = get_vectors(self.features, docs, self.scaler)
+        preds = self.clf.predict(X)
+        return int_to_doc_class(preds)
+
+    # Bypass predict trained check for usage inside train method
+    def _internal_predict(self, docs: [Document]) -> [DocumentClass]:
+        temp = self.trained
+        self.trained = True
+
+        result = self.predict(docs)
+
+        self.trained = temp
+        return result
+        
 
 class MLPDocumentClassifier:
 
