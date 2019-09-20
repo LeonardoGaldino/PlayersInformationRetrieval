@@ -57,6 +57,14 @@ class MLPDocClassifier(Classifier):
         preds = self.clf.predict(X)
         return int_to_doc_class(preds)
 
+    def predict_proba(self, docs: [Document]) -> [float]:
+        if not self.trained:
+            raise AssertionError("MLP not trained yet. Call train before predict.")
+
+        X, _ = get_vectors(self.features, docs, self.scaler)
+        preds = self.clf.predict_proba(X)
+        return preds
+
     # Bypass predict trained check for usage inside train method
     def _internal_predict(self, docs: [Document]) -> [DocumentClass]:
         temp = self.trained

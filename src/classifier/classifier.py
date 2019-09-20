@@ -18,6 +18,10 @@ class Classifier(ABC):
     def predict(self, docs: [Document]) -> [DocumentClass]:
         pass
 
+    @abstractmethod
+    def predict_proba(self, docs: [Document]) -> [float]:
+        pass
+
 class AccuracyWeightedEnsemble:
 
     def __init__(self, classifiers: [Classifier]):
