@@ -46,3 +46,14 @@ def compute_metrics(y_pred: [int], y: [int]):
     recall = float(tp)/float(p)
     f1m = 2*prec*recall/(prec+recall)
     return (mat, acc, prec, recall, f1m)
+
+def print_metrics(y_pred: [int], y: [int]):
+    print("Metrics:")
+    mat, acc, prec, recall, f1m = compute_metrics(y_pred, y)
+    print("Confusion matrix: ")
+    print(mat[0])
+    print(mat[1])
+    print("Accuracy: {}".format(acc))
+    print("Precision: {}".format(prec))
+    print("Recall: {}".format(recall))
+    print("F1-Measure: {}".format(f1m))

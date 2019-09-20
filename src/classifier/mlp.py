@@ -8,7 +8,7 @@ from common.corpus import Corpus
 from common.document import Document, DocumentClass
 from classifier.classifier import Classifier
 from classifier.features_extractors import FeatureExtractor
-from classifier.utils import compute_metrics, doc_class_to_int, int_to_doc_class, get_vectors, get_vectors_scaler
+from classifier.utils import print_metrics, doc_class_to_int, int_to_doc_class, get_vectors, get_vectors_scaler
 
 class MLPDocClassifier(Classifier):
 
@@ -43,16 +43,7 @@ class MLPDocClassifier(Classifier):
         correct_preds = doc_class_to_int([test_doc.is_instance for test_doc in test_docs])
 
         if verbose:
-            print("\nFinal stats:")
-            mat, acc, prec, recall, f1m = compute_metrics(final_preds, correct_preds)
-            print("Confusion matrix: ")
-            print(mat[0])
-            print(mat[1])
-            print("Accuracy: {}".format(acc))
-            print("Precision: {}".format(prec))
-            print("Recall: {}".format(recall))
-            print("F1-Measure: {}".format(f1m))
-            print("")
+            print_metrics(final_preds, correct_preds)
             end_time = dt.now()
             train_duration = (end_time-start_time).total_seconds()
             print("Training took {} seconds".format(train_duration))
