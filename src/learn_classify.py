@@ -55,5 +55,5 @@ if __name__ == '__main__':
     MLPDocumentClassifier(corpus).train([feature_words4], verbose=True)'''
 
     print("New MLP:")
-    MLPDocClassifier(selector2).train(corpus.documents, verbose=True)
+    MLPDocClassifier(selector2).train(corpus.documents, train_size=.8, verbose=True)
 

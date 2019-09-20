@@ -16,14 +16,14 @@ class MLPDocClassifier(Classifier):
         super().__init__(feature_extractor)
         self.trained = False
 
-    def train(self, docs: [Document], verbose: bool = False):
+    def train(self, docs: [Document], train_size: float = 1.0, verbose: bool = False):
         start_time = dt.now()
 
         positive_docs = list(filter(lambda doc: doc.is_instance == DocumentClass.INSTANCE, docs))
         negative_docs = list(filter(lambda doc: not doc.is_instance == DocumentClass.INSTANCE, docs))
 
-        total_positive = int(len(positive_docs)*.7)
-        total_negative = int(len(negative_docs)*.7)
+        total_positive = int(len(positive_docs)*train_size)
+        total_negative = int(len(negative_docs)*train_size)
 
         train_docs = positive_docs[:total_positive] + negative_docs[:total_negative]
         train_docs = shuffle(train_docs)
@@ -38,12 +38,15 @@ class MLPDocClassifier(Classifier):
 
         self.clf.fit(X, y)
 
-        final_preds = self._internal_predict(test_docs)
-        final_preds = doc_class_to_int(final_preds)
-        correct_preds = doc_class_to_int([test_doc.is_instance for test_doc in test_docs])
+        if len(test_docs) > 0:
+            final_preds = self._internal_predict(test_docs)
+            final_preds = doc_class_to_int(final_preds)
+            correct_preds = doc_class_to_int([test_doc.is_instance for test_doc in test_docs])
 
+            if verbose:
+                print_metrics(final_preds, correct_preds)
+                
         if verbose:
-            print_metrics(final_preds, correct_preds)
             end_time = dt.now()
             train_duration = (end_time-start_time).total_seconds()
             print("Training took {} seconds".format(train_duration))

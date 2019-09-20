@@ -11,7 +11,7 @@ class Classifier(ABC):
         self.feature_extractor = feature_extractor
 
     @abstractmethod
-    def train(self, docs: [Document]):
+    def train(self, docs: [Document], train_size: float, verbose: bool):
         pass
 
     @abstractmethod
