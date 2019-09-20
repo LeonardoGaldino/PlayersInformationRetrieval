@@ -1,8 +1,8 @@
 from sklearn.preprocessing import StandardScaler
 
-from common.document import Document
+from common.document import Document, DocumentClass
 
-def get_vectors(self, feature_words: [str], docs: [Document], scaler: StandardScaler = None) -> ([float], [int]):
+def get_vectors(feature_words: [str], docs: [Document], scaler: StandardScaler = None) -> ([float], [int]):
     vectors = [doc.get_feature_vector(feature_words) for doc in docs]
     X, y = [vector[0] for vector in vectors], [vector[1] for vector in vectors]
 
@@ -12,7 +12,7 @@ def get_vectors(self, feature_words: [str], docs: [Document], scaler: StandardSc
     y = [label.value for label in y]
     return X, y
 
-def get_vectors_scaler(self, feature_words: [str], docs: [Document]) -> ([float], [int], StandardScaler):
+def get_vectors_scaler(feature_words: [str], docs: [Document]) -> ([float], [int], StandardScaler):
     vectors = [doc.get_feature_vector(feature_words) for doc in docs]
     X, y = [vector[0] for vector in vectors], [vector[1] for vector in vectors]
     scaler = StandardScaler().fit(X)
@@ -20,6 +20,12 @@ def get_vectors_scaler(self, feature_words: [str], docs: [Document]) -> ([float]
     X = scaler.transform(X)
     y = [label.value for label in y]
     return X, y, scaler
+
+def doc_class_to_int(classes: [DocumentClass]):
+    return [1 if _cls == DocumentClass.INSTANCE else 0 for _cls in classes]
+
+def int_to_doc_class(classes: [int]):
+    return [DocumentClass.INSTANCE if _cls == 1 else DocumentClass.NON_INSTANCE for _cls in classes]
 
 def compute_metrics(y_pred: [int], y: [int]):
     mat = [[0,0], [0,0]]
