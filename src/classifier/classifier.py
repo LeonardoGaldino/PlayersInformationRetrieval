@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
 
 from common.document import Document, DocumentClass
-from features_extractors import FeatureExtractor
+from classifier.features_extractors import FeatureExtractor
 
 
 class Classifier(ABC):
 
     def __init__(self, feature_extractor: FeatureExtractor):
-        super().__init__(self)
+        super().__init__()
         self.feature_extractor = feature_extractor
 
     @abstractmethod
