@@ -2,7 +2,8 @@ import os
 
 from utils.corpus_loader import load_corpus
 from classifier.features_extractors import MostFrequentWordsExtractor, DocFrequencyDifferenceExtractor, PlainFrequencyDifferenceExtractor, MixedFrequencyDifferenceExtractor
-from classifier.mlp import MLPDocumentClassifier, MLPDocClassifier
+from classifier.mlp import MLPDocumentClassifier
+from classifier.classifier import AccuracyWeightedEnsemble
 
 # Por enquanto, apenas testa o corpus
 if __name__ == '__main__':
@@ -39,21 +40,11 @@ if __name__ == '__main__':
     print("MixedFrequencyDifferenceExtractor: {}".format(feature_words4))
     print()
 
-    '''print("AllExtractors:")
-    MLPDocumentClassifier(corpus).train([feature_words, feature_words2, feature_words3, feature_words4], verbose=True)
+    mlp = MLPDocumentClassifier(selector)
+    mlp2 = MLPDocumentClassifier(selector2)
+    mlp3 = MLPDocumentClassifier(selector3)
+    mlp4 = MLPDocumentClassifier(selector4)
 
-    print("MostFreq + DocDiff + Mixed DifferenceExtractors:")
-    MLPDocumentClassifier(corpus).train([feature_words, feature_words2, feature_words4], verbose=True)
-
-    print("DocDiff + Mixed Extractors:")
-    MLPDocumentClassifier(corpus).train([feature_words2, feature_words4], verbose=True)
-
-    print("DocDifferenceExtractor:")
-    MLPDocumentClassifier(corpus).train([feature_words2], verbose=True)
-
-    print("MixedFrequencyDifferenceExtractor:")
-    MLPDocumentClassifier(corpus).train([feature_words4], verbose=True)'''
-
-    print("New MLP:")
-    MLPDocClassifier(selector2).train(corpus.documents, train_size=.8, verbose=True)
+    ensemble = AccuracyWeightedEnsemble([mlp, mlp2, mlp3, mlp4])
+    ensemble.train(corpus.documents, train_size=.7, verbose=True)
 
