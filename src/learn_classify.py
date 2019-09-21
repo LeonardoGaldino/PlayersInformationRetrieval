@@ -45,6 +45,6 @@ if __name__ == '__main__':
     mlp3 = MLPDocumentClassifier(selector3)
     mlp4 = MLPDocumentClassifier(selector4)
 
-    ensemble = AccuracyWeightedEnsemble([mlp, mlp2, mlp3, mlp4])
+    ensemble = AccuracyWeightedEnsemble([mlp2])
     ensemble.train(corpus.documents, train_size=.7, verbose=True)
 

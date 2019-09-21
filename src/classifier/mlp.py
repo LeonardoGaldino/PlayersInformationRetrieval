@@ -1,6 +1,7 @@
 from datetime import datetime as dt
 
 from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
 from sklearn import preprocessing
 
@@ -32,7 +33,13 @@ class MLPDocumentClassifier(Classifier):
         test_docs = shuffle(test_docs)
 
         self.features = self.feature_extractor.get_feature_words(num_features=50)
-        self.clf = MLPClassifier(hidden_layer_sizes=(len(self.features), len(self.features)), activation='relu', solver='adam', max_iter=1000)
+        clf = MLPClassifier(hidden_layer_sizes=(len(self.features), len(self.features)), activation='relu', solver='adam', max_iter=1000)
+
+
+        parameters = {'solver': ('adam', 'lbfgs', 'sgd'), 'activation': ('relu', 'identity', 'tanh', 'logistic'), 'learning_rate_init': (0.001, 0.005, 0.01)}
+        clf = GridSearchCV(clf, parameters, scoring='accuracy', verbose=1)
+
+        self.clf = clf
 
         X, y, self.scaler = get_vectors_scaler(self.features, train_docs)
 
