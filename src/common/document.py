@@ -1,13 +1,22 @@
+import enum
+
 import requests
 import bs4
+import nltk
 
 from utils.http_status import OK
 from utils.tokenizer import tokenize
 
+class DocumentClass(enum.IntEnum):
+    NON_INSTANCE = 0
+    INSTANCE = 1
+    UNKNOWN = 2
+
 class Document:
 
-    def __init__(self, raw_doc: str):
+    def __init__(self, raw_doc: str, is_instance: DocumentClass):
         self.raw_doc = raw_doc
+        self.is_instance = is_instance
         self._build_doc_vocabulary()
 
     # Função interna do documento responsável por transformar o documento cru (html com todas as tags e textos)
@@ -55,18 +64,29 @@ class Document:
         # (É um mapeamento de palavras e sua frequência no documento)
         self.vocabulary = {}
 
+        stemmer = nltk.stem.porter.PorterStemmer()
         # Faz a contagem
         for word in doc_words:
-            word_freq = self.vocabulary.get(word, 0)
-            self.vocabulary[word] = word_freq + 1
+            token = stemmer.stem(word).lower()
+            word_freq = self.vocabulary.get(token, 0)
+            self.vocabulary[token] = word_freq + 1
 
+
+    def get_feature_vector(self, features: [str]) -> ([int], DocumentClass):
+        vector = [0]*len(features)
+        i = 0
+        for feature in features:
+            vector[i] = self.vocabulary.get(feature, 0)
+            i += 1
+
+        return (vector, self.is_instance)
 
     # Método apenas para auxiliar a construção de um Documento a partir de uma URL.
     @staticmethod
-    def load_from_url(url: str):
+    def load_from_url(url: str, is_instance: DocumentClass):
         req = requests.get(url)
         if req.status_code == OK:
-            return Document(req.content.decode('utf-8'))
+            return Document(req.content.decode('utf-8'), is_instance)
         return None
 
 
