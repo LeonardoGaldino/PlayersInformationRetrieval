@@ -1,0 +1,43 @@
+pages/Fbref:
+    0 - 2
+    1 - 998
+pages/FIFA:
+    0 - 579
+    1 - 421
+pages/MLSSoccer:
+    0 - 641
+    1 - 359
+pages/Soccerway:
+    0 - 755
+    1 - 245
+pages/FCTable:
+    0 - 797
+    1 - 203
+pages/UEFA:
+    0 - 478
+    1 - 522
+pages/Eurosport:
+    0 - 87
+    1 - 914
+
+pagesHeuristica/Fbref:
+    0 - 2
+    1 - 998
+pagesHeuristica/FIFA:
+    0 - 24
+    1 - 976
+pagesHeuristica/MLSSoccer:
+    0 - 283
+    1 - 717
+pagesHeuristica/Soccerway:
+    0 - 107
+    1 - 893
+pagesHeuristica/FCTable:
+    0 - 1
+    1 - 999
+pagesHeuristica/UEFA:
+    0 - 0
+    1 - 1000
+pagesHeuristica/Eurosport:
+    0 - 0
+    1 - 1000
