@@ -1,9 +1,24 @@
 import os
 
-from utils.corpus_loader import load_corpus
+from utils.corpus_loader import load_corpus, load_documents
 from classifier.features_extractors import MostFrequentWordsExtractor, DocFrequencyDifferenceExtractor, PlainFrequencyDifferenceExtractor, MixedFrequencyDifferenceExtractor
 from classifier.mlp import MLPDocumentClassifier
 from classifier.classifier import AccuracyWeightedEnsemble
+from common.document import DocumentClass
+
+def classify_crawler_samples(clf: AccuracyWeightedEnsemble, folder: str):
+    _dir = os.path.join(os.path.join(os.path.join(cd, 'src'), 'crawler'), folder)
+
+    for site_root in os.listdir(_dir):
+        root_folder = os.path.join(_dir, site_root)
+        docs = load_documents(root_folder)
+        print(root_folder + ':')
+        results = clf.predict(docs)
+        insts = [res for res in results if res == DocumentClass.INSTANCE]
+        non_insts = [res for res in results if res == DocumentClass.NON_INSTANCE]
+        print(len(insts))
+        print(len(non_insts))
+
 
 # Por enquanto, apenas testa o corpus
 if __name__ == '__main__':
@@ -47,4 +62,10 @@ if __name__ == '__main__':
 
     ensemble = AccuracyWeightedEnsemble([mlp2])
     ensemble.train(corpus.documents, train_size=.7, verbose=True)
+
+    classify_crawler_samples(ensemble, 'pages')
+
+
+
+
 
