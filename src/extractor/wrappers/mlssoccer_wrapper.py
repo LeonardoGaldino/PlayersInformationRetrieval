@@ -24,7 +24,6 @@ class MLSSoccerWrapper:
         player["number"] = int(title_overlay.find('span', class_='subtitle').get_text())
 
         player_metas = player_container.find_all('div', class_='player_meta')
-        player["real_name"] = player_metas[0].find('div', class_='name').get_text().replace('Real Name:\n', '')
 
         birth_infos = player_metas[1].find('div', class_='age').get_text().split()
         player["age"] = birth_infos[1]
@@ -36,17 +35,12 @@ class MLSSoccerWrapper:
 
         birthplace = player_metas[1].find('div', class_='hometown').get_text().split('\n')[1].split(', ')
         player["birthplace"] = {}
-        player["birthplace"]["city"] = birthplace[0]
-        player["birthplace"]["country"] = "USA" if len(birthplace[1]) <= 2 else birthplace[1]
+        country = "USA" if len(birthplace[1]) <= 2 else birthplace[1]
+        player["birthplace"] = birthplace[0] + ', ' + country
 
         stats = player_metas[0].find_all('span', class_='stat')
         player["height"] = stats[0].get_text()
         player["weight"] = stats[1].get_text() + "lb"
-
-        career_years = player_container.parent.find('tbody').find_all('td', attrs={"data-title": "Year"})
-        career_clubs = player_container.parent.find('tbody').find_all('td', attrs={"data-title": "Club"})
-        player["career"] = [{"year": career_years[i].get_text(), "club": career_clubs[i].get_text()} for i in range(len(career_years))]
-        player["career"].pop()
 
         # SO PARA TESTE
         self.pretty(player)

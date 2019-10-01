@@ -27,10 +27,9 @@ class SoccerWayWrapper:
         self.player["birthplace"] = {}
 
         if 'First name' in player_infos_list:
-            self.player["name"]["first_name"] = player_infos_list[player_infos_list.index('First name') + 1]
-
-        if 'Last name' in player_infos_list:
-            self.player["name"]["last_name"] = player_infos_list[player_infos_list.index('Last name') + 1]
+            self.player["name"] = player_infos_list[player_infos_list.index('First name') + 1]
+            if 'Last name' in player_infos_list:
+                self.player["name"] += ' ' + player_infos_list[player_infos_list.index('Last name') + 1]
 
         if 'Nationality' in player_infos_list:
             self.player["nationality"] = player_infos_list[player_infos_list.index('Nationality') + 1]
@@ -47,10 +46,10 @@ class SoccerWayWrapper:
             self.player["age"] = player_infos_list[player_infos_list.index('Age') + 1]
 
         if 'Country of birth' in player_infos_list:
-            self.player["birthplace"]["country"] = player_infos_list[player_infos_list.index('Country of birth') + 1]
-
-        if 'Place of birth' in player_infos_list:
-            self.player["birthplace"]["city"] = player_infos_list[player_infos_list.index('Place of birth') + 1]
+            self.player["birthplace"] = player_infos_list[player_infos_list.index('Country of birth') + 1]
+            if 'Place of birth' in player_infos_list:
+                self.player["birthplace"] = player_infos_list[player_infos_list.index('Place of birth') + 1]\
+                    + ', ' + self.player["birthplace"]
 
         if 'Position' in player_infos_list:
             self.player["position"] = player_infos_list[player_infos_list.index('Position') + 1]
