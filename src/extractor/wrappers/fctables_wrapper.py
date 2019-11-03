@@ -44,7 +44,7 @@ class FCTablesWrapper:
             self.player["position"] = player_infos_list[player_infos_list.index('Position:') + 1]
 
         if 'Nationality:' in player_infos_list:
-            self.player["nationality"] = player_infos_list[player_infos_list.index('Nationality:') + 1]
+            self.player["nationality"] = player_infos_list[player_infos_list.index('Nationality:') + 1][1:]
 
         player_text = soup.find_all("div", class_="panel-body")[8].get_text()
         if player_text:
