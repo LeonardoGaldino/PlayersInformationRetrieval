@@ -2,7 +2,7 @@ import bs4
 import re
 
 # SO PARA TESTE
-IN_FILE = '../../../samples_pages/page-52-[fbref].html'
+IN_FILE = '../../../samples_pages/page-51-[fbref].html'
 
 
 class FbrefWrapper:
@@ -34,39 +34,20 @@ class FbrefWrapper:
         if 'Footed' in player_infos_list:
             self.player["foot"] = player_infos_list[player_infos_list.index('Footed') + 1]
 
-        for item in player_infos_list:
-            height = re.match(r".*cm$", item)
-            weight = re.match(r".*kg$", item)
-
-            if height is not None:
-                self.player["height"] = height.string
-            if weight is not None:
-                self.player["weight"] = weight.string
-            pass
-
         if 'Born' in player_infos_list:
-            self.player["date_of_birth"] = {}
-
-            birthdate = player_infos_list[player_infos_list.index('Born') + 1].split(" ")
-            self.player["date_of_birth"]["day"] = birthdate[1]
-            self.player["date_of_birth"]["month"] = self.month_to_int(birthdate[0])
-            self.player["date_of_birth"]["year"] = birthdate[2]
-
             birthplace_r = player_infos_list[player_infos_list.index('Born') + 2]
             birthplace = re.search(r"^in (.*)$", birthplace_r)
 
             if birthplace is not None:
-                self.player["place_of_birth"] = {}
-                self.player["place_of_birth"] = birthplace.group(1)
+                country = re.search(r"^.*, ([.*, ]?.*)$", birthplace.group(1))
 
-        if 'National Team' in player_infos_list:
-            self.player["national_team"] = player_infos_list[player_infos_list.index('National Team') + 1]
+                if country is not None:
+                    self.player["nationality"] = country.group(1)
+                else:
+                    self.player["nationality"] = birthplace.group(1)
 
         if 'Club' in player_infos_list:
-            self.player["club"] = player_infos_list[player_infos_list.index('Club') + 1].split(' ')[0]
-
-        # SO PARA TESTE
-        self.pretty(self.player)
+            self.player["team"] = player_infos_list[player_infos_list.index('Club') + 1].split(' ')[0]
 
         return self.player
 
@@ -109,16 +90,17 @@ class FbrefWrapper:
 
         return months.get(month)
 
-    # SO PARA TESTE
-    def pretty(self, d, indent=0):
-        for key, value in d.items():
-            print('\t' * indent + str(key))
-            if isinstance(value, dict):
-                self.pretty(value, indent+1)
-            else:
-                print('\t' * (indent+1) + str(value))
+# SO PARA TESTE
+def pretty(d, indent=0):
+    for key, value in d.items():
+        print('\t' * indent + str(key))
+        if isinstance(value, dict):
+            pretty(value, indent+1)
+        else:
+            print('\t' * (indent+1) + str(value))
 
 
 if __name__ == '__main__':
     wrapper = FbrefWrapper()
-    wrapper.extract_player_entity(IN_FILE)
+    dicionary = wrapper.extract_player_entity(IN_FILE)
+    pretty(dicionary)

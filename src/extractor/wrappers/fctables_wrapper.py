@@ -2,7 +2,7 @@ import bs4
 import re
 
 # SO PARA TESTE
-IN_FILE = '../../../samples_pages/page-21-[fctables].html'
+IN_FILE = '../../../samples_pages/page-29-[fctables].html'
 
 
 class FCTablesWrapper:
@@ -36,43 +36,26 @@ class FCTablesWrapper:
         if 'Position:' in player_infos_list:
             self.player["position"] = player_infos_list[player_infos_list.index('Position:') + 1]
 
-        if 'Height:' in player_infos_list:
-            self.player["height"] = player_infos_list[player_infos_list.index('Height:') + 1]
-
-        if 'Weight:' in player_infos_list:
-            self.player["weight"] = player_infos_list[player_infos_list.index('Weight:') + 1]
-
-        if 'Date of birth:' in player_infos_list:
-            birth_info = player_infos_list[player_infos_list.index('Date of birth:') + 1]
-            age = re.match(r"^\d\d", birth_info)
-
-            self.player["age"] = int(age[0])
-
-            birth_info_list = re.match(r".*\((.*)\)", birth_info).group(1).split('-')
-            self.player["date_of_birth"] = {}
-
-            self.player["date_of_birth"]["day"] = int(birth_info_list[2])
-            self.player["date_of_birth"]["month"] = int(birth_info_list[1])
-            self.player["date_of_birth"]["year"] = int(birth_info_list[0])
-
         if 'Nationality:' in player_infos_list:
             self.player["nationality"] = player_infos_list[player_infos_list.index('Nationality:') + 1]
 
-        # SO PARA TESTE
-        self.pretty(self.player)
+        player_text = soup.find_all("div", class_="panel-body")[8].get_text()
+        if player_text:
+            self.player["text"] = player_text
 
         return self.player
 
-    # SO PARA TESTE
-    def pretty(self, d, indent=0):
-        for key, value in d.items():
-            print('\t' * indent + str(key))
-            if isinstance(value, dict):
-                self.pretty(value, indent+1)
-            else:
-                print('\t' * (indent+1) + str(value))
+# SO PARA TESTE
+def pretty(d, indent=0):
+    for key, value in d.items():
+        print('\t' * indent + str(key))
+        if isinstance(value, dict):
+            pretty(value, indent+1)
+        else:
+            print('\t' * (indent+1) + str(value))
 
 
 if __name__ == '__main__':
     wrapper = FCTablesWrapper()
-    wrapper.extract_player_entity(IN_FILE)
+    dicionary = wrapper.extract_player_entity(IN_FILE)
+    pretty(dicionary)

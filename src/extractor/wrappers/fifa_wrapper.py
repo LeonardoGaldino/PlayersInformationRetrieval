@@ -2,7 +2,7 @@ import bs4
 import re
 
 # SO PARA TESTE
-IN_FILE = '../../../samples_pages/page-40-[fifa].html'
+IN_FILE = '../../../samples_pages/page-31-[fifa].html'
 
 
 class FifaWrapper:
@@ -26,23 +26,10 @@ class FifaWrapper:
         self.player["nationality"] = re.search(r"(\w+[ \w+]*)", player_infos[1].get_text()).group()
         self.player["position"] = re.search(r"(\w+[ \w+]*)", player_infos[2].get_text()).group()
 
-        player_infos = player_container.find('div', class_="fi-p__profile-info")\
-            .find_all("div", class_="fi-p__profile-number__number")
+        player_text = soup.find_all("div", class_="fi-p__profile-text")[1].get_text()
 
-        self.player["age"] = int(re.search(r"(\w+[ \w+]*)", player_infos[0].get_text()).group())
-        self.player["height"] = re.search(r"(\w+[ \w+]*)", player_infos[1].get_text()).group()
-
-        birth_infos = player_container.find("div", class_="fi-p__profile-text--uppercase")\
-            .find("span").string
-        birth_info_list = re.findall(r"\w+", birth_infos)
-
-        self.player["date_of_birth"] = {}
-        self.player["date_of_birth"]["day"] = birth_info_list[0]
-        self.player["date_of_birth"]["month"] = self.month_to_int(birth_info_list[1])
-        self.player["date_of_birth"]["year"] = int(birth_info_list[2])
-
-        # SO PARA TESTE
-        self.pretty(self.player)
+        if player_text is not None:
+            self.player["text"] = player_text
 
         return self.player
 
@@ -65,16 +52,17 @@ class FifaWrapper:
 
         return months.get(month)
 
-    # SO PARA TESTE
-    def pretty(self, d, indent=0):
-        for key, value in d.items():
-            print('\t' * indent + str(key))
-            if isinstance(value, dict):
-                self.pretty(value, indent+1)
-            else:
-                print('\t' * (indent+1) + str(value))
+# SO PARA TESTE
+def pretty(d, indent=0):
+    for key, value in d.items():
+        print('\t' * indent + str(key))
+        if isinstance(value, dict):
+            pretty(value, indent+1)
+        else:
+            print('\t' * (indent+1) + str(value))
 
 
 if __name__ == '__main__':
     wrapper = FifaWrapper()
-    wrapper.extract_player_entity(IN_FILE)
+    dicionary = wrapper.extract_player_entity(IN_FILE)
+    pretty(dicionary)
