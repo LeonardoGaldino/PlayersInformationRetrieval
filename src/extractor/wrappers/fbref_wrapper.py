@@ -2,7 +2,8 @@ import bs4
 import re
 
 # SO PARA TESTE
-IN_FILE = '../../../samples_pages/page-51-[fbref].html'
+IN_FILE = '../../../samples_pages/page-53-[fbref].html'
+#IN_FILE = '../../crawler/pagesHeuristica/Fbref/page30.html'
 
 
 class FbrefWrapper:
@@ -47,7 +48,7 @@ class FbrefWrapper:
                     self.player["nationality"] = birthplace.group(1)
 
         if 'Club' in player_infos_list:
-            self.player["team"] = player_infos_list[player_infos_list.index('Club') + 1].split(' ')[0]
+            self.player["team"] = player_infos_list[player_infos_list.index('Club') + 1].replace('(', '')
 
         return self.player
 

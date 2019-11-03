@@ -28,7 +28,14 @@ class FCTablesWrapper:
             self.player["name"] = player_infos_list[player_infos_list.index('Name:') + 1]
 
         if 'Team:' in player_infos_list:
-            self.player["team"] = player_infos_list[player_infos_list.index('Team:') + 1]
+            team_list = player_infos_list[player_infos_list.index('Team:') + 1].split()
+            team_list.pop()
+            team = ''
+            for i in range(len(team_list)):
+                team += team_list[i]
+                if i != len(team_list) - 1:
+                    team += " "
+            self.player["team"] = team
 
         if 'Number:' in player_infos_list:
             self.player["number"] = player_infos_list[player_infos_list.index('Number:') + 1]

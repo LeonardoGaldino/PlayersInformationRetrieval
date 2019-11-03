@@ -2,7 +2,8 @@ import bs4
 import re
 
 # SO PARA TESTE
-IN_FILE = '../../../samples_pages/page-70-[uefa].html'
+#IN_FILE = '../../../samples_pages/page-70-[uefa].html'
+IN_FILE = "../../crawler/pagesHeuristica/UEFA/page352.html"
 
 
 class UefaWrapper:
@@ -20,8 +21,8 @@ class UefaWrapper:
 
         name = player_infos.find("h1", class_="player-header_name")
         position = player_infos.find("div", class_="player-header_category")
-        nationality = player_infos.find("span", class_="player-header_team-name")
-        team = player_infos.find_all("div", class_="player-header_team")
+        nationality = player_infos.find("div", class_="player-header_country")
+        team = player_infos.find("div", class_="player-header_team").find("span", class_="club-logo")
 
         if name is not None:
             self.player["name"] = name.get_text()
@@ -30,10 +31,10 @@ class UefaWrapper:
             self.player["position"] = position.get_text()
 
         if nationality is not None:
-            self.player["nationality"] = re.search(r"(\w+[ |\w+]*)", nationality.get_text()).group(0)
+            self.player["nationality"] = nationality.get_text()
 
-        if len(team) > 1 and team[1] is not None:
-            self.player["team"] = team[1].get_text()
+        if team is not None:
+            self.player["team"] = team['title']
 
         return self.player
 
