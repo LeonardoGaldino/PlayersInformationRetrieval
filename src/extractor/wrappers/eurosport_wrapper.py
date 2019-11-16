@@ -29,6 +29,11 @@ class EurosportWrapper:
         if 'Country:' in player_infos_list:
             self.player["nationality"] = player_infos_list[player_infos_list.index('Country:') + 1]
 
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/")
+        url_error_pos = url.find("prs")
+        url = url[:url_error_pos - 1] + '_' + url[url_error_pos:len(url) - 5]
+        self.player["url"] = url
+
         return self.player
 
     @staticmethod

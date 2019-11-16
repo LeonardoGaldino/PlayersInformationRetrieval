@@ -31,6 +31,9 @@ class FifaWrapper:
         if player_text is not None:
             self.player["text"] = player_text
 
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/").replace(".html", "")
+        self.player["url"] = url
+
         return self.player
 
     @staticmethod

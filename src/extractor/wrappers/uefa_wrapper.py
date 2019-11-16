@@ -36,6 +36,9 @@ class UefaWrapper:
         if team is not None:
             self.player["team"] = team['title']
 
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/").replace(".html", "")
+        self.player["url"] = url
+
         return self.player
 
 # SO PARA TESTE

@@ -38,6 +38,9 @@ class SoccerWayWrapper:
         if 'Foot' in player_infos_list:
             self.player["foot"] = player_infos_list[player_infos_list.index('Foot') + 1]
 
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/").replace(".html", "")
+        self.player["url"] = url
+
         return self.player
 
     @staticmethod

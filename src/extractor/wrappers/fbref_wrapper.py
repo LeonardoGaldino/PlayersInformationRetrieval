@@ -50,6 +50,9 @@ class FbrefWrapper:
         if 'Club' in player_infos_list:
             self.player["team"] = player_infos_list[player_infos_list.index('Club') + 1].replace('(', '')
 
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/")
+        self.player["url"] = url
+
         return self.player
 
     @staticmethod

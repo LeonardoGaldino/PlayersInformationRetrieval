@@ -1,6 +1,5 @@
 import json
-import os
-import re
+import nltk
 
 COUNTRIES = {'BRA': 'Brazil',
              'FRA': 'France',
@@ -81,17 +80,12 @@ COUNTRIES = {'BRA': 'Brazil',
              'GUY': 'Guyana'
              }
 
+
 class FrequencyIndex:
 
     def __init__(self):
-        self.index = {}
-        self.index["name"] = {}
-        self.index["position"] = {}
-        self.index["nationality"] = {}
-        self.index["team"] = {}
-        self.index["number"] = {}
-        self.index["foot"] = {}
-        self.index["terms"] = {}
+        self.index = {"name": {}, "position": {}, "nationality": {}, "team": {}, "number": {}, "foot": {}, "term": {}}
+        self.data = None
         self.size = 0
 
     def create_from_json(self):
@@ -118,25 +112,29 @@ class FrequencyIndex:
                 self.add_number_entity(entity['number'], self.data.index(entity) + 1)
 
             if 'text' in entity:
-                pass
+                self.add_text_entity(entity, self.data.index(entity) + 1)
+
+            self.size += 1
 
     def load_index(self):
         pass
 
+    def get_doc(self, i: int) -> dict:
+        return self.data[i - 1]
+
     def save_index(self):
         txt = ''
         for i in self.index.keys():
-            txt += i + '\n'
             for j in self.index[i].keys():
-                txt += j + ' ' + str(self.index[i][j]['freq'])
+                txt += i + "//" + str(j) + ' ' + str(self.index[i][j]['freq'])
                 for p in self.index[i][j]['postings']:
                     txt += ' ' + str(p)
                 txt += '\n'
 
-        with open ('freq_index.txt', 'w') as file:
+        with open('freq_index.txt', 'w') as file:
             file.write(txt)
 
-    def add_name_entry (self, name: str, pos: int):
+    def add_name_entry(self, name: str, pos: int):
         names = name.split()
         for n in names:
             if n in self.index['name']:
@@ -212,17 +210,63 @@ class FrequencyIndex:
                 self.index['team'][w]['postings'] = [pos]
 
     def add_number_entity(self, number: int, pos: int):
-        num = str(number)
-        if num in self.index['number']:
-            self.index['number'][num]['freq'] += 1
-            self.index['number'][num]['postings'].append(pos)
-        else:
-            self.index['number'][num] = {}
-            self.index['number'][num]['freq'] = 1
-            self.index['number'][num]['postings'] = [pos]
+        num = number
+        quart = ""
 
-    def add_text_entity(self, text: str, pos: int):
-        pass
+        if num < 25:
+            quart = "[0-24]"
+        elif num > 74:
+            quart = "[75-99]"
+        else:
+            if num < 50:
+                quart = "[25-49]"
+            else:
+                quart = "[50-74]"
+
+        if quart in self.index['number']:
+            self.index['number'][quart]['freq'] += 1
+            self.index['number'][quart]['postings'].append(pos)
+        else:
+            self.index['number'][quart] = {}
+            self.index['number'][quart]['freq'] = 1
+            self.index['number'][quart]['postings'] = [pos]
+
+    def add_text_entity(self, entity: dict, pos: int):
+        text = ""
+
+        if 'name' in entity:
+            text += entity["name"] + "\n"
+        if 'position' in entity:
+            text += entity["position"] + "\n"
+        if 'nationality' in entity:
+            text += entity["nationality"] + "\n"
+        if 'foot' in entity:
+            text += entity["foot"] + "\n"
+        if 'team' in entity:
+            text += entity["team"] + "\n"
+        if 'number' in entity:
+            text += str(entity["number"]) + "\n"
+        if 'text' in entity:
+            text += entity["text"]
+
+        text = text.lower()
+        tokens = nltk.word_tokenize(text)
+
+        for token in tokens:
+            if not token.isalnum():
+                tokens.pop(tokens.index(token))
+
+        tokens.sort()
+        tokens = list(dict.fromkeys(tokens))
+
+        for token in tokens:
+            if token in self.index['term']:
+                self.index['term'][token]['freq'] += 1
+                self.index['term'][token]['postings'].append(pos)
+            else:
+                self.index['term'][token] = {}
+                self.index['term'][token]['freq'] = 1
+                self.index['term'][token]['postings'] = [pos]
 
 
 if __name__ == '__main__':

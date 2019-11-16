@@ -38,7 +38,7 @@ class FCTablesWrapper:
             self.player["team"] = team
 
         if 'Number:' in player_infos_list:
-            self.player["number"] = player_infos_list[player_infos_list.index('Number:') + 1]
+            self.player["number"] = int(player_infos_list[player_infos_list.index('Number:') + 1])
 
         if 'Position:' in player_infos_list:
             self.player["position"] = player_infos_list[player_infos_list.index('Position:') + 1]
@@ -49,6 +49,12 @@ class FCTablesWrapper:
         player_text = soup.find_all("div", class_="panel-body")[8].get_text()
         if player_text:
             self.player["text"] = player_text
+
+        url = file.split("/")[-1].replace("page-", "").replace("_", "/").replace(".html", "")
+        error_s = url[:len(url)-1].rfind("/")
+        if "players" != url[error_s-7:error_s]:
+            url = url[:error_s] + '_' + url[error_s+1:]
+        self.player["url"] = url
 
         return self.player
 
