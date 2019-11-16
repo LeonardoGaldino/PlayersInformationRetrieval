@@ -54,6 +54,15 @@ We are going to use these websites as our data sources:
         https://www.fifa.com/womensworldcup/players/browser/
     Examples:
         https://www.fifa.com/womensworldcup/players/player/212337/
+7. FBRef -https://fbref.com/en/
+    Characteristics: 
+        Tabelar data: Yes
+        Description List: No
+    List:
+        https://fbref.com/en/players/ne/
+    Examples:
+        https://fbref.com/en/players/7e9b52d8/Stefan-Nedelchev
+
 
 
 Infos:
