@@ -55,24 +55,6 @@ We are going to use these websites as our data sources:
     Examples:
         https://www.fifa.com/womensworldcup/players/player/212337/
 
-7. TopDrawerSoccer - https://www.topdrawersoccer.com/
-    Characteristics: 
-        Tabelar data: Yes
-        Description List: No
-    List:
-        https://www.topdrawersoccer.com/college-soccer/stats/player/women
-    Examples:
-        https://www.topdrawersoccer.com/college-soccer/college-player-profile/katie-mcclure/cpid-105384
-
-8. FoxSports - https://www.foxsports.com/soccer/
-    Characteristics: 
-        Tabelar data: Yes
-        Description List: No
-    List:
-        https://www.foxsports.com/soccer/players
-    Examples:
-        https://www.foxsports.com/soccer/saad-abdul-salaam-player-stats
-
 
 Infos:
     Description List: https://www.w3schools.com/tags/tag_dl.asp
