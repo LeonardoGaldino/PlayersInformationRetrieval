@@ -15,15 +15,15 @@ class Index:
         self.type = 0
 
     def load_data(self):
-        with open("../docs_file.json", "r") as file:
+        with open("docs_file.json", "r") as file:
             self.data = json.load(file)
 
     def load(self):
         index_file = None
         self.load_data()
 
-        if path.exists("freq_index.txt"):
-            index_file = open("freq_index.txt", "r")
+        if path.exists("index/freq_index.txt"):
+            index_file = open("index/freq_index.txt", "r")
             self.type = 1
             self.load_freq_index(index_file)
 
@@ -53,8 +53,16 @@ class Index:
         return self.data[id - 1]
 
     def find(self, field: str, term: str) -> (int, list):
-        freq = self.index[field][term]["freq"]
-        postings = self.index[field][term]["postings"]
+        field_index = self.index.get(field, None)
+        if field_index is None:
+            return 0, []
+
+        data = field_index.get(term, None)
+        if data is None:
+            return 0, []
+
+        freq = data["freq"]
+        postings = data["postings"]
 
         return freq, postings
 
