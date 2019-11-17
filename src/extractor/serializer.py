@@ -62,8 +62,8 @@ if __name__ == '__main__':
 
     serial = Serializer(extractors, directories)
     serial.extract_entities()
-
-    with open("../docs_file.json", "w") as write_file:
-        json.dump(serial.entities, write_file)
+    print(serial.entities["position"].keys())
+    #with open("../docs_file.json", "w") as write_file:
+     #   json.dump(serial.entities, write_file)
 
     #print('Quantidade de entidades: ' + str(len(serial.entities)))

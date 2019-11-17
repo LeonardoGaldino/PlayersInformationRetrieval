@@ -49,14 +49,14 @@ class Index:
             for doc in words:
                 self.index[field][word]["postings"].append(int(doc))
 
-    def get_document(self, position: int) -> dict:
-        return self.data[position - 1]
+    def get_document(self, id: int) -> dict:
+        return self.data[id - 1]
 
     def find(self, field: str, term: str) -> (int, list):
         freq = self.index[field][term]["freq"]
         postings = self.index[field][term]["postings"]
 
-        return (freq, postings)
+        return freq, postings
 
 
 if __name__ == "__main__":
