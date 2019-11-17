@@ -53,14 +53,7 @@ class Index:
         return self.data[id - 1]
 
     def find(self, field: str, term: str) -> (int, list):
-        field_index = self.index.get(field, None)
-        if field_index is None:
-            return 0, []
-
-        data = field_index.get(term, None)
-        if data is None:
-            return 0, []
-
+        data = self.index[field][term] if (field in self.index.keys()) and (term in self.index[field].keys()) else {"freq": 0, "postings": []}
         freq = data["freq"]
         postings = data["postings"]
 

@@ -89,7 +89,7 @@ class FrequencyIndex:
         self.size = 0
 
     def create_from_json(self):
-        with open("../docs_file.json", "r") as file:
+        with open("docs_file.json", "r") as file:
             self.data = json.load(file)
 
         for entity in self.data:
@@ -111,8 +111,7 @@ class FrequencyIndex:
             if 'number' in entity:
                 self.add_number_entity(entity['number'], self.data.index(entity) + 1)
 
-            if 'text' in entity:
-                self.add_text_entity(entity, self.data.index(entity) + 1)
+            self.add_text_entity(entity, self.data.index(entity) + 1)
 
             self.size += 1
 
@@ -131,7 +130,7 @@ class FrequencyIndex:
                     txt += ' ' + str(p)
                 txt += '\n'
 
-        with open('freq_index.txt', 'w') as file:
+        with open('index/freq_index.txt', 'w') as file:
             file.write(txt)
 
     def add_name_entry(self, name: str, pos: int):
