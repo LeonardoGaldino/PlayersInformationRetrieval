@@ -15,15 +15,15 @@ class Index:
         self.type = 0
 
     def load_data(self):
-        with open("../docs_file.json", "r") as file:
+        with open("src/docs_file.json", "r") as file:
             self.data = json.load(file)
 
     def load(self):
         index_file = None
         self.load_data()
 
-        if path.exists("freq_index.txt"):
-            index_file = open("freq_index.txt", "r")
+        if path.exists("src/index/freq_index.txt"):
+            index_file = open("src/index/freq_index.txt", "r")
             self.type = 1
             self.load_freq_index(index_file)
 
