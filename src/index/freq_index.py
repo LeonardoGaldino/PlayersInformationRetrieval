@@ -127,24 +127,25 @@ class FrequencyIndex:
             for j in self.index[i].keys():
                 txt += i + "//" + str(j) + ' ' + str(self.index[i][j]['freq'])
                 for p in self.index[i][j]['postings']:
-                    txt += ' ' + str(p)
+                    txt += ' ' + str(p[0]) + ":" + str(p[1])
                 txt += '\n'
 
         with open('index/freq_index.txt', 'w') as file:
             file.write(txt)
 
-    def add_name_entry(self, name: str, pos: int):
+    def add_name_entry(self, name: str, id: int):
+        name = name.lower()
         names = name.split()
         for n in names:
             if n in self.index['name']:
                 self.index['name'][n]['freq'] += 1
-                self.index['name'][n]['postings'].append(pos)
+                self.index['name'][n]['postings'].append((id, 1))
             else:
                 self.index['name'][n] = {}
                 self.index['name'][n]['freq'] = 1
-                self.index['name'][n]['postings'] = [pos]
+                self.index['name'][n]['postings'] = [(id, 1)]
 
-    def add_position_entity(self, position: str, pos: int):
+    def add_position_entity(self, position: str, id: int):
         if '-' in position:
             positions = position.split('-')
         elif '/' in position:
@@ -166,49 +167,53 @@ class FrequencyIndex:
             else:
                 pass
 
+            p = p.lower()
             if p in self.index['position']:
                 self.index['position'][p]['freq'] += 1
-                self.index['position'][p]['postings'].append(pos)
+                self.index['position'][p]['postings'].append((id, 1))
             else:
                 self.index['position'][p] = {}
                 self.index['position'][p]['freq'] = 1
-                self.index['position'][p]['postings'] = [pos]
+                self.index['position'][p]['postings'] = [(id, 1)]
 
-    def add_nationality_entity(self, nationality: str, pos: int):
+    def add_nationality_entity(self, nationality: str, id: int):
         if len(nationality) == 3:
             nationality = COUNTRIES[nationality]
 
+        nationality = nationality.lower()
         words = nationality.split()
         for w in words:
             if w in self.index['nationality']:
                 self.index['nationality'][w]['freq'] += 1
-                self.index['nationality'][w]['postings'].append(pos)
+                self.index['nationality'][w]['postings'].append((id, 1))
             else:
                 self.index['nationality'][w] = {}
                 self.index['nationality'][w]['freq'] = 1
-                self.index['nationality'][w]['postings'] = [pos]
+                self.index['nationality'][w]['postings'] = [(id, 1)]
 
-    def add_foot_entity(self, foot: str, pos: int):
+    def add_foot_entity(self, foot: str, id: int):
+        foot = foot.lower()
         if foot in self.index['foot']:
             self.index['foot'][foot]['freq'] += 1
-            self.index['foot'][foot]['postings'].append(pos)
+            self.index['foot'][foot]['postings'].append((id, 1))
         else:
             self.index['foot'][foot] = {}
             self.index['foot'][foot]['freq'] = 1
-            self.index['foot'][foot]['postings'] = [pos]
+            self.index['foot'][foot]['postings'] = [(id, 1)]
 
-    def add_team_entity(self, team: str, pos: int):
+    def add_team_entity(self, team: str, id: int):
+        team = team.lower()
         words = team.split()
         for w in words:
             if w in self.index['team']:
                 self.index['team'][w]['freq'] += 1
-                self.index['team'][w]['postings'].append(pos)
+                self.index['team'][w]['postings'].append((id, 1))
             else:
                 self.index['team'][w] = {}
                 self.index['team'][w]['freq'] = 1
-                self.index['team'][w]['postings'] = [pos]
+                self.index['team'][w]['postings'] = [(id, 1)]
 
-    def add_number_entity(self, number: int, pos: int):
+    def add_number_entity(self, number: int, id: int):
         num = number
         quart = ""
 
@@ -224,13 +229,13 @@ class FrequencyIndex:
 
         if quart in self.index['number']:
             self.index['number'][quart]['freq'] += 1
-            self.index['number'][quart]['postings'].append(pos)
+            self.index['number'][quart]['postings'].append((id, 1))
         else:
             self.index['number'][quart] = {}
             self.index['number'][quart]['freq'] = 1
-            self.index['number'][quart]['postings'] = [pos]
+            self.index['number'][quart]['postings'] = [(id, 1)]
 
-    def add_text_entity(self, entity: dict, pos: int):
+    def add_text_entity(self, entity: dict, id: int):
         text = ""
 
         if 'name' in entity:
@@ -256,16 +261,21 @@ class FrequencyIndex:
                 tokens.pop(tokens.index(token))
 
         tokens.sort()
-        tokens = list(dict.fromkeys(tokens))
-
+        quant = {}
         for token in tokens:
+            if token in quant:
+                quant[token] += 1
+            else:
+                quant[token] = 1
+
+        for token in quant:
             if token in self.index['term']:
                 self.index['term'][token]['freq'] += 1
-                self.index['term'][token]['postings'].append(pos)
+                self.index['term'][token]['postings'].append((id, quant[token]))
             else:
                 self.index['term'][token] = {}
                 self.index['term'][token]['freq'] = 1
-                self.index['term'][token]['postings'] = [pos]
+                self.index['term'][token]['postings'] = [(id, quant[token])]
 
 
 if __name__ == '__main__':

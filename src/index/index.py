@@ -47,13 +47,14 @@ class Index:
             words.pop(0)
 
             for doc in words:
-                self.index[field][word]["postings"].append(int(doc))
+                doc = doc.split(":")
+                self.index[field][word]["postings"].append((int(doc[0]), int(doc[1])))
 
     def get_document(self, id: int) -> dict:
         return self.data[id - 1]
 
     def find(self, field: str, term: str) -> (int, list):
-        data = self.index[field][term] if (field in self.index.keys()) and (term in self.index[field].keys()) else {"freq": 0, "postings": []}
+        data = self.index[field][term] if (field in self.index) and (term in self.index[field]) else {"freq": 0, "postings": []}
         freq = data["freq"]
         postings = data["postings"]
 
