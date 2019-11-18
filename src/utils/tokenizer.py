@@ -4,6 +4,11 @@ numeric_regex = r'[-+]?(\d)*.?(\d)*'
 reg = re.compile(numeric_regex)
 
 def tokenize(_input: str) -> [str]:
+    if _input is None:
+        return []
+
+    _input = str(_input)
+
     separators = ['.', ',', '!', '?', '"', '\n', '\t', 
                 '(', ')', '|', ';', '>', '<', '[', ']', '\'', ':', 
                 '@', '*', '/', '=', '+']
