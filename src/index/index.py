@@ -4,6 +4,7 @@ import json
 
 from math import log
 from functools import reduce
+from index.document import IndexDocument
 
 
 class Index:
@@ -53,8 +54,11 @@ class Index:
                 doc = doc.split(":")
                 self.index[field][word]["postings"].append((int(doc[0]), int(doc[1])))
 
-    def get_document(self, id: int) -> dict:
-        return self.data[id - 1]
+    def get_document(self, _id: int) -> IndexDocument:
+        return IndexDocument(_id-1, self.data[_id - 1])
+
+    def get_documents(self, ids: [int]) -> [IndexDocument]:
+        return [self.get_document(_id) for _id in ids]
 
     def corpus_size(self) -> int:
         return len(self.data)
@@ -72,6 +76,10 @@ class Index:
         postings = data["postings"]
 
         return freq, postings
+
+    def find_documents(self, field: str, term: str) -> [IndexDocument]:
+        postings = self.find(field, term)[1]
+        return self.get_documents([posting[0] for posting in postings])
 
 
 if __name__ == "__main__":
