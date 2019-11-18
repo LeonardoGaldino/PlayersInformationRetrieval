@@ -1,5 +1,6 @@
-from functools import reduce
+from functools import reduce, total_ordering
 from abc import ABC, abstractmethod
+from math import sqrt
 
 from utils import tokenizer
 
@@ -24,10 +25,55 @@ class BaseDocument(ABC):
         return (0.5 + (0.5*occurrences)/most_freq)
 
 
+class DocumentVector:
+
+    def __init__(self, doc: BaseDocument, index):
+        self.doc = doc
+        self.index = index
+        self.project(self)
+
+    def dot_product(self, other) -> float:
+        if not isinstance(other, DocumentVector):
+            raise TypeError("Trying to compute dot product with parameter that is not a DocumentVector.")
+
+        if self.dim != other.dim:
+            raise TypeError("Trying to compute similarity between vectors of different size.")
+
+        return reduce(lambda acc, vs: acc+ vs[0]*vs[1], list(zip(self.v, other.v)), 0.0)
+
+    def norm(self) -> float:
+        return sqrt(reduce(lambda acc, v: acc + v*v, self.v, 0.0))
+
+    def similarity(self, other) -> float:
+        if not isinstance(other, DocumentVector):
+            raise TypeError("Trying to compute similarity with parameter that is not a DocumentVector.")
+
+        if self.dim != other.dim:
+            raise TypeError("Trying to compute similarity between vectors of different size.")
+
+        return self.dot_product(other)/(self.norm() + other.norm())
+
+    def project(self, other):
+        if not isinstance(other, DocumentVector):
+            raise TypeError("Trying to project vector with parameter that is not a DocumentVector.")
+
+        terms = other.doc.get_terms()
+
+        self.dim = len(terms)
+        self.v = [self.doc.get_tf(term)*self.index.get_idf(term) for term in terms]
+
+    @total_ordering
+    def __lt__(self, other):
+        return True
+
+
 class QueryDocument(BaseDocument):
 
-    def __init__(self, query: str):
-        self.query = query
+    def __init__(self, query: str = None, terms: [str] = None):
+        if terms is not None: 
+            self.query = ' '.join(terms)
+        else:
+            self.query = query
 
     def get_terms(self) -> [str]:
         return [token.lower() for token in tokenizer.tokenize(self.query)]
