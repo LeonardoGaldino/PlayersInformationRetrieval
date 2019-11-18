@@ -31,7 +31,7 @@ def _reduce_set_return(d: dict, query_type: str):
     return d
 
 def get_docs_ids(req: Request):
-    query_types = ['term', 'name', 'position', 'nationality', 'number', 'team', 'leg']
+    query_types = ['term', 'name', 'position', 'nationality', 'number', 'team', 'foot']
     mapping = reduce(_reduce_set_return, query_types, {})
 
     query_type, terms = extract_query_type_terms(mapping)
