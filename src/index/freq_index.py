@@ -256,9 +256,7 @@ class FrequencyIndex:
         text = text.lower()
         tokens = nltk.word_tokenize(text)
 
-        for token in tokens:
-            if not token.isalnum():
-                tokens.pop(tokens.index(token))
+        tokens = list(filter(lambda token: token.isalnum(), tokens))
 
         tokens.sort()
         quant = {}
