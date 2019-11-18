@@ -2,6 +2,9 @@ import os.path
 from os import path
 import json
 
+from math import log
+from functools import reduce
+
 
 class Index:
 
@@ -52,6 +55,16 @@ class Index:
 
     def get_document(self, id: int) -> dict:
         return self.data[id - 1]
+
+    def corpus_size(self) -> int:
+        return len(self.data)
+
+    def get_idf(self, term: str) -> float:
+        postings = list(map(lambda field: self.find(field, term)[1], self.index.keys()))
+        postings = reduce(lambda acc, v: acc+list(map(lambda doc_entry: doc_entry[0], v)), postings, [])
+        occurrences = list(set(postings))
+        
+        return log(1 + float(self.corpus_size())/float(1+len(occurrences)))
 
     def find(self, field: str, term: str) -> (int, list):
         data = self.index[field][term] if (field in self.index) and (term in self.index[field]) else {"freq": 0, "postings": []}
