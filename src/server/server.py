@@ -14,6 +14,28 @@ index.load()
 
 fields = ['term', 'name', 'position', 'nationality', 'number', 'team', 'foot']
 
+document_anchor_HTML = """
+    <div class="card" style="width: 677px;height: 93px;margin-left: 166px;margin-bottom: 27px">
+        <div class="card-body">
+            <a class="card-title" href={} style="margin-bottom: 0px;color: #1a0dab;font-size: 20px;
+                font-weight: 400;line-height: 26px;font-family:arial,sans-serif">
+                {}
+            </a>
+            <br>
+            <a class="card-subtitle mb-2 text-muted" href={} style="margin-bottom: 0px;margin-top: 0px;
+                color:#006621;font-style: normal;font-size: 16px;font-weight: 400;line-height: 24px;
+                padding-top: 1px;font-family:arial,sans-serif">
+            {}
+            </a>
+            <br>
+            <span class="card-text" style="text-align: left;color: #545454;font-family: arial,sans-serif;
+                font-size: 14px;font-weight: 400;line-height: 21.98px;">
+            {}
+            </span>
+        </div>
+    </div>'
+"""
+
 def extract_field_query(req: Request) -> (str, str):
     field, query = None, None
 
@@ -26,15 +48,13 @@ def extract_field_query(req: Request) -> (str, str):
     return field, query
 
 def get_html_for_docs(docs: [IndexDocument]) -> str:
-    descricao = ""
     for doc in docs:
-        descricao = ""
+        description = ""
         for attr in dir(doc):
             if(getattr(doc, attr)!=None and (attr=="name" or attr=="nationality" or attr=="number" or attr=="position" or attr=="team")):
-                descricao=descricao+attr+"-"+ str(getattr(doc, attr))+" "
-                doc.descricao = descricao
-                #print("doc.%s = %r" % (attr, getattr(doc, attr)))
-    urls = ['<div class="card" style="width: 677px;height: 93px;margin-left: 166px;margin-bottom: 27px"><div class="card-body"><a class="card-title" href={} style="margin-bottom: 0px;color: #1a0dab;font-size: 20px;font-weight: 400;line-height: 26px;font-family:arial,sans-serif">{}</a><br><a class="card-subtitle mb-2 text-muted" href={} style="margin-bottom: 0px;margin-top: 0px;color:#006621;font-style: normal;font-size: 16px;font-weight: 400;line-height: 24px;padding-top: 1px;font-family:arial,sans-serif">{}</a><br><span class="card-text" style="text-align: left;color: #545454;font-family: arial,sans-serif;font-size: 14px;font-weight: 400;line-height: 21.98px;">{}</span></div></div>'.format(doc.url, doc.name,doc.url,doc.url.split(".com")[0]+".com",doc.descricao) for doc in docs]
+                description = description+attr+"-"+ str(getattr(doc, attr))+" "
+                doc.description = description
+    urls = [document_anchor_HTML.format(doc.url, doc.name,doc.url,doc.url.split(".com")[0]+".com",doc.description) for doc in docs]
     return '\n'.join(urls)
 
 @app.route('/search', methods=["GET", "OPTIONS"])
