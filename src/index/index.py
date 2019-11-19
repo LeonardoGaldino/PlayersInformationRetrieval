@@ -8,6 +8,11 @@ from index.document import IndexDocument, QueryDocument, DocumentVector
 from index.utils import map_number_to_range
 from utils.tokenizer import tokenize
 
+import nltk
+from nltk.corpus import stopwords as nltk_stopwords
+
+nltk.download('stopwords')
+stopwords = nltk_stopwords.words('english')
 
 class Index:
 
@@ -92,6 +97,9 @@ class Index:
     def get_documents_for_query(self, field: str, query: str) -> [IndexDocument]:
         # Separa cada termo da consulta
         terms = tokenize(query.lower(), True)
+
+        # Remove stopwords da consulta
+        terms = list(filter(lambda term: not term in stopwords, terms))
 
         # Busca todos os documentos para cada termo da consulta
         docs = [self.find_documents(field, term) for term in terms]
