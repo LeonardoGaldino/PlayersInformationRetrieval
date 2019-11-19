@@ -50,10 +50,15 @@ def extract_field_query(req: Request) -> (str, str):
 def get_html_for_docs(docs: [IndexDocument]) -> str:
     for doc in docs:
         description = ""
+        attrs = ["name", "nationality", "number", "position", "team"]
+
         for attr in dir(doc):
-            if(getattr(doc, attr)!=None and (attr=="name" or attr=="nationality" or attr=="number" or attr=="position" or attr=="team")):
-                description = description+attr+"-"+ str(getattr(doc, attr))+" "
+            if(getattr(doc, attr) is not None and attr in attrs):
+                presentable_attr = attr[0].upper() + attr[1:]
+                description = description + " | " + "<strong>" + presentable_attr + ": </strong>" + str(getattr(doc, attr))
                 doc.description = description
+        doc.description += " |"
+        
     urls = [document_anchor_HTML.format(doc.url, doc.name,doc.url,doc.url.split(".com")[0]+".com",doc.description) for doc in docs]
     return '\n'.join(urls)
 
