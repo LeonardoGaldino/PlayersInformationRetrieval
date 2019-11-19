@@ -36,7 +36,9 @@ document_anchor_HTML = """
     </div>'
 """
 
-def extract_field_query(req: Request) -> (str, str):
+def extract_req_params(req: Request) -> (str, str, bool):
+    tf_idf = not req.args.get('tfidf', '1') == '0'
+
     field, query = None, None
 
     for _field in fields:
@@ -45,7 +47,7 @@ def extract_field_query(req: Request) -> (str, str):
             query = req.args.get(_field)
             break
 
-    return field, query
+    return field, query, tf_idf
 
 def get_html_for_docs(docs: [IndexDocument]) -> str:
     for doc in docs:
@@ -58,7 +60,7 @@ def get_html_for_docs(docs: [IndexDocument]) -> str:
                 description = description + " | " + "<strong>" + presentable_attr + ": </strong>" + str(getattr(doc, attr))
                 doc.description = description
         doc.description += " |"
-        
+
     urls = [document_anchor_HTML.format(doc.url, doc.name,doc.url,doc.url.split(".com")[0]+".com",doc.description) for doc in docs]
     return '\n'.join(urls)
 
@@ -71,12 +73,12 @@ def hello_world():
     if request.method == 'OPTIONS':
         return response
 
-    field, query = extract_field_query(request)
+    field, query, tf_idf = extract_req_params(request)
     if field is None or query is None:
         response.status = "400"
         response.data = "<h1> Specify a valid query field: one of {} </h1>".format(str(fields))
     else:
-        docs = index.get_documents_for_query(field, query)
+        docs = index.get_documents_for_query(field, query, tf_idf)
         response.data = get_html_for_docs(docs)
         response.status = "200"
 

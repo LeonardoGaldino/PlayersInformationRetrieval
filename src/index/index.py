@@ -94,7 +94,7 @@ class Index:
         postings = self.find(field, term)[1]
         return self.get_documents([posting[0] for posting in postings])
 
-    def get_documents_for_query(self, field: str, query: str) -> [IndexDocument]:
+    def get_documents_for_query(self, field: str, query: str, tf_idf: bool = True) -> [IndexDocument]:
         # Separa cada termo da consulta
         terms = tokenize(query.lower(), True)
 
@@ -118,10 +118,12 @@ class Index:
 
         # Transforma o documento da consulta em um vetor no espaço da consulta
         query_vector = DocumentVector(query_doc, self)
+        query_vector.project(query_vector, tf_idf)
+
 
         # Para cada vetor de documento, projetamos ele no espaço da consulta
         for doc_vector in docs_vectors:
-            doc_vector.project(query_vector)
+            doc_vector.project(query_vector, tf_idf)
 
         # Computamos a similiridade com o vetor de consulta de cada documento e associamos ao mesmo documento para recupera-los depois
         docs_score_vectors = [(query_vector.similarity(doc_vector), doc_vector) for doc_vector in docs_vectors]

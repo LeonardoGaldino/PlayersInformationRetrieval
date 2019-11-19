@@ -24,6 +24,9 @@ class BaseDocument(ABC):
 
         return (0.5 + (0.5*occurrences)/(1.0 + most_freq))
 
+    def has_term(self, term: str) -> bool:
+        return term in self.get_terms()
+
 
 class DocumentVector:
 
@@ -53,14 +56,16 @@ class DocumentVector:
 
         return self.dot_product(other)/(1.0 + self.norm() + other.norm())
 
-    def project(self, other):
+    def project(self, other, tf_idf: bool = True):
         if not isinstance(other, DocumentVector):
             raise TypeError("Trying to project vector with parameter that is not a DocumentVector.")
 
         terms = other.doc.get_terms()
 
         self.dim = len(terms)
-        self.v = [self.doc.get_tf(term)*self.index.get_idf(term) for term in terms]
+
+        weight_function = lambda term: self.doc.get_tf(term)*self.index.get_idf(term) if tf_idf else (1 if self.doc.has_term(term) else 0)
+        self.v = [weight_function(term) for term in terms]
 
     @total_ordering
     def __lt__(self, other):
