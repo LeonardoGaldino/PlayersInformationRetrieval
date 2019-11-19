@@ -17,9 +17,8 @@ export class RiServiceService {
     return Observable.throw(error);
   }
 
-  public getHTMLForSearch(query: string): Observable<string> {
-    return this.http
-      .get(API_URL + '/HTMLSearch/' + query).pipe(map(response=>response.json()))
+  public getHTMLForSearch(query: string): Observable<any>{
+    return this.http.get(API_URL + '/search'+query).pipe(map(response=> { return {obj:response} }))
   }
 
   public testHTMLForSearch(query: string): string {

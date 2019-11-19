@@ -1,5 +1,12 @@
 <div class="container" style="width: 100%;margin-left: 0px;padding-left:0px;margin-right: 0px;padding-right:0px">
-  <h1 style="text-align: center;border-bottom: 1px solid gray">Results</h1>
+  <div class="row"> 
+      <div class="col">
+        <button (click)="goBack()" class="btn btn-success">back</button>
+      </div>
+      <div class="col">
+        <h1 style="text-align: center;border-bottom: 1px solid gray">Results</h1>
+      </div> 
+  </div> 
   <br>
   <div id="toFill">
 
@@ -7,13 +14,14 @@
   <!--
     <div class="card" style="width: 677px;height: 93px;margin-left: 166px;margin-bottom: 27px">
       <div class="card-body">
-        <h3 class="card-title" style="margin-bottom: 0px;color: #1a0dab;font-size: 20px;font-weight: 400;line-height: 26px;font-family:arial,sans-serif">
+        <a class="card-title" href="https://medium.com/tableless/entendendo-rxjs-observable-com-angular-6f607a9a6a00" style="margin-bottom: 0px;color: #1a0dab;font-size: 20px;font-weight: 400;line-height: 26px;font-family:arial,sans-serif">
           Entendendo RxJS Observable com Angular - Medium
-        </h3>
-        <h5 class="card-subtitle mb-2 text-muted" style="margin-bottom: 0px;margin-top: 0px;color:#006621;font-style: normal;font-size: 16px;font-weight: 400;line-height: 24px;padding-top: 1px;font-family:arial,sans-serif">
+        </a>
+        <a class="card-subtitle mb-2 text-muted" href="https://medium.com/tableless/entendendo-rxjs-observable-com-angular-6f607a9a6a00" style="margin-bottom: 0px;margin-top: 0px;color:#006621;font-style: normal;font-size: 16px;font-weight: 400;line-height: 24px;padding-top: 1px;font-family:arial,sans-serif">
           https://medium.com/tableless/entendendo-rxjs-observable-com-angular-6f607a9a6a00
-        </h5>
-        <span class="card-text" style="color: #545454;font-family: arial,sans-serif;font-size: 14px;font-weight: 400;line-height: 21.98px;">
+        </a>
+        <br>
+        <span class="card-text" style="text-align: left;color: #545454;font-family: arial,sans-serif;font-size: 14px;font-weight: 400;line-height: 21.98px;">
             4 de jan. de 2017 - Após passar por um projeto com Angular 2(ou somente Angular, para os mais íntimos) posso dizer que: É um framework com muitas ...
         </span>
       </div>
