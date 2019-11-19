@@ -1,6 +1,6 @@
 from functools import reduce
 
-from flask import Flask
+from flask import Flask, make_response
 from flask import request, Request
 
 from utils import tokenizer
@@ -29,11 +29,22 @@ def get_html_for_docs(docs: [IndexDocument]) -> str:
     urls = ['<div> <a href="{}"> {} </a> </div>'.format(doc.url, doc.name) for doc in docs]
     return '\n'.join(urls)
 
-@app.route('/search')
+@app.route('/search', methods=["GET", "OPTIONS"])
 def hello_world():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    if request.method == 'OPTIONS':
+        return response
+
     field, query = extract_field_query(request)
     if field is None or query is None:
-        return "<h1> Specify a valid query field: one of {} </h1>".format(str(fields))
+        response.status = "400"
+        response.data = "<h1> Specify a valid query field: one of {} </h1>".format(str(fields))
+    else:
+        docs = index.get_documents_for_query(field, query)
+        response.data = get_html_for_docs(docs)
+        response.status = "200"
 
-    docs = index.get_documents_for_query(field, query)
-    return get_html_for_docs(docs)
+    return response
