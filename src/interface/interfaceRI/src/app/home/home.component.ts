@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Data } from '@angular/router';
 import { DataService } from '../data.service';
+import { query } from '@angular/core/src/render3/query';
 
 @Component({
   selector: 'app-home',
@@ -27,22 +28,33 @@ export class HomeComponent implements OnInit {
   pesquisaGenerica="";
 
   onSubmit(){
+    //this.dataService.clearQuery()
+    //localStorage.removeItem('queryParam');
     var queryParams = "";
+    var qp:any = {}
     if(this.pesquisaGenerica.trim()==""){
-      if(this.nomeConsulta.trim()!="")queryParams+="name="+this.nomeConsulta;
-      //if(this.idadeConsulta.trim()!="")queryParams+="&age="+this.idadeConsulta;
-      if(this.posicaoConsulta.trim()!="")queryParams+="&position="+this.posicaoConsulta;
-      if(this.nacionalidadeConsulta.trim()!="")queryParams+="&nacionality="+this.nacionalidadeConsulta;
-      if(this.numeroConsulta.trim()!="")queryParams+="&number="+this.numeroConsulta;
-      if(this.equipeConsulta.trim()!="")queryParams+="&team="+this.equipeConsulta;
-      if(this.pernaChuteConsulta.trim()!="")queryParams+="&leg="+this.pernaChuteConsulta; 
-      if(queryParams.startsWith("&"))queryParams = queryParams.substr(1,queryParams.length);
+      if(this.nomeConsulta!="")qp.name = this.nomeConsulta;
+      //if(this.idadeConsulta!="")qp.age = this.idadeConsulta;
+      if(this.posicaoConsulta!="")qp.position = this.posicaoConsulta;
+      if(this.nacionalidadeConsulta!="")qp.nacionality = this.nacionalidadeConsulta;
+      if(this.numeroConsulta!="")qp.number = this.numeroConsulta;
+      if(this.equipeConsulta!="")qp.team = this.equipeConsulta;
+      if(this.pernaChuteConsulta!="")qp.leg = this.pernaChuteConsulta;
     }
     else{
-      queryParams+="term="+this.pesquisaGenerica;
+      if(this.pesquisaGenerica!="")qp.term = this.pesquisaGenerica;
     }
-    this.dataService.storeQuery(queryParams);
-    this.router.navigate(['/search']);
+
+    Object.keys(qp).forEach(key=>{
+      if(queryParams!="")queryParams+="&";
+      queryParams +=key+"="+qp[key] ;
+    })
+    //this.dataService.storeQuery("?"+queryParams);
+    localStorage.setItem('queryParam', JSON.stringify("?"+queryParams));
+    this.router.navigate(['/search'],{
+        queryParams:qp
+      }
+    );
   }
 
 }
