@@ -1,6 +1,8 @@
 import json
 import nltk
 
+from index.utils import map_number_to_range
+
 COUNTRIES = {'BRA': 'Brazil',
              'FRA': 'France',
              'ESP': 'Spain',
@@ -214,18 +216,7 @@ class FrequencyIndex:
                 self.index['team'][w]['postings'] = [(id, 1)]
 
     def add_number_entity(self, number: int, id: int):
-        num = number
-        quart = ""
-
-        if num < 25:
-            quart = "[0-24]"
-        elif num > 74:
-            quart = "[75-99]"
-        else:
-            if num < 50:
-                quart = "[25-49]"
-            else:
-                quart = "[50-74]"
+        quart = map_number_to_range(number)
 
         if quart in self.index['number']:
             self.index['number'][quart]['freq'] += 1

@@ -5,6 +5,7 @@ import json
 from math import log
 from functools import reduce
 from index.document import IndexDocument, QueryDocument, DocumentVector
+from index.utils import map_number_to_range
 from utils.tokenizer import tokenize
 
 
@@ -72,6 +73,12 @@ class Index:
         return log(1 + float(self.corpus_size())/float(1+len(occurrences)))
 
     def find(self, field: str, term: str) -> (int, list):
+        if field == 'number':
+            try:
+                term = map_number_to_range(int(term))
+            except:
+                pass
+        
         data = self.index[field][term] if (field in self.index) and (term in self.index[field]) else {"freq": 0, "postings": []}
         freq = data["freq"]
         postings = data["postings"]
@@ -84,7 +91,7 @@ class Index:
 
     def get_documents_for_query(self, field: str, query: str) -> [IndexDocument]:
         # separa cada termo da consulta
-        terms = tokenize(query.lower())
+        terms = tokenize(query.lower(), True)
 
         # busca todos os documentos para cada termo da consulta
         docs = [self.find_documents(field, term) for term in terms]

@@ -22,7 +22,7 @@ class BaseDocument(ABC):
         occurrences = self.get_term_frequency(term)
         (most_freq, _) = self.get_most_frequent_term()
 
-        return (0.5 + (0.5*occurrences)/most_freq)
+        return (0.5 + (0.5*occurrences)/(1.0 + most_freq))
 
 
 class DocumentVector:
@@ -51,7 +51,7 @@ class DocumentVector:
         if self.dim != other.dim:
             raise TypeError("Trying to compute similarity between vectors of different size.")
 
-        return self.dot_product(other)/(self.norm() + other.norm())
+        return self.dot_product(other)/(1.0 + self.norm() + other.norm())
 
     def project(self, other):
         if not isinstance(other, DocumentVector):
@@ -76,7 +76,7 @@ class QueryDocument(BaseDocument):
             self.query = query
 
     def get_terms(self) -> [str]:
-        return [token.lower() for token in tokenizer.tokenize(self.query)]
+        return [token.lower() for token in tokenizer.tokenize(self.query, True)]
 
 
 class IndexDocument(BaseDocument):
