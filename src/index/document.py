@@ -78,6 +78,12 @@ class QueryDocument(BaseDocument):
     def get_terms(self) -> [str]:
         return [token.lower() for token in tokenizer.tokenize(self.query, True)]
 
+    def __repr__(self):
+        return '[QueryDocument: {}]'.format(self.query)
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class IndexDocument(BaseDocument):
 
@@ -108,6 +114,18 @@ class IndexDocument(BaseDocument):
         tokenized_text = list(map(tokenizer.tokenize, [self.name, self.number, self.position, self.nationality, self.team, self.foot]))
         flat_tokens = reduce(lambda acc, v: acc+v, tokenized_text, [])
         return [token.lower() for token in flat_tokens]
+
+    def __repr__(self):
+        return '[IndexDocument: {}]'.format(self.id)
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __hash__(self):
+        return self.id
+
+    def __eq__(self, other):
+        return self.__hash__() == other.__hash__() 
 
     
 

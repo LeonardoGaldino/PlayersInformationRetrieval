@@ -90,14 +90,17 @@ class Index:
         return self.get_documents([posting[0] for posting in postings])
 
     def get_documents_for_query(self, field: str, query: str) -> [IndexDocument]:
-        # separa cada termo da consulta
+        # Separa cada termo da consulta
         terms = tokenize(query.lower(), True)
 
-        # busca todos os documentos para cada termo da consulta
+        # Busca todos os documentos para cada termo da consulta
         docs = [self.find_documents(field, term) for term in terms]
 
-        # deixa a lista de documentos flat, i.e., em uma lista (antes numa matriz)
+        # Deixa a lista de documentos flat, i.e., em uma lista (antes numa matriz)
         docs = reduce(lambda acc, v: acc+v, docs, [])
+
+        # Remove documentos duplicados
+        docs = list(set(docs))
 
         # Transforma cada documento em um vetor
         docs_vectors = [DocumentVector(doc, self) for doc in docs]
