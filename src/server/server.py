@@ -5,60 +5,35 @@ from flask import request, Request
 
 from utils import tokenizer
 
-from index import index, document
+from index.index import Index
+from index.document import IndexDocument
 
 app = Flask(__name__)
-_index = index.Index()
-_index.load()
+index = Index()
+index.load()
 
-def extract_query_type_terms(mapping: dict) -> (str, [str]):
-    query_type, query = None, None
+fields = ['term', 'name', 'position', 'nationality', 'number', 'team', 'foot']
 
-    for key, value in mapping.items():
-        if value is not None:
-            query_type = key
-            query = value
+def extract_field_query(req: Request) -> (str, str):
+    field, query = None, None
+
+    for _field in fields:
+        if req.args.get(_field, None) is not None:
+            field = _field
+            query = req.args.get(_field)
             break
 
-    if query_type is None and query is None:
-        return None, None
-    
-    return query_type, [token.lower() for token in tokenizer.tokenize(query)]
+    return field, query
 
-
-def _reduce_set_return(d: dict, query_type: str):
-    d[query_type] = request.args.get(query_type, None)
-    return d
-
-def get_docs_ids(req: Request):
-    query_types = ['term', 'name', 'position', 'nationality', 'number', 'team', 'foot']
-    mapping = reduce(_reduce_set_return, query_types, {})
-
-    query_type, terms = extract_query_type_terms(mapping)
-    if query_type is None:
-        return []
-
-    docs = [_index.find_documents(query_type, term) for term in terms]
-
-    docs = reduce(lambda acc, v: acc+v, docs, [])
-
-    docs_vectors = [document.DocumentVector(doc, _index) for doc in docs]
-
-    query_doc = document.QueryDocument(None, terms)
-    query_vector = document.DocumentVector(query_doc, _index)
-
-    for doc_vector in docs_vectors:
-        doc_vector.project(query_vector)
-
-    docs_score_vectors = [(query_vector.similarity(doc_vector), doc_vector) for doc_vector in docs_vectors]
-
-    docs_score_vectors.sort()
-    docs_score_vectors.reverse()
-
-    return [d[1].doc.id for d in docs_score_vectors]
+def get_html_for_docs(docs: [IndexDocument]) -> str:
+    urls = ['<div> <a href="{}"> {} </a> </div>'.format(doc.url, doc.name) for doc in docs]
+    return '\n'.join(urls)
 
 @app.route('/search')
 def hello_world():
-    ids = get_docs_ids(request)
-    ids = [str(_id) for _id in ids]
-    return 'Hello, world: ' + ','.join(ids)
+    field, query = extract_field_query(request)
+    if field is None or query is None:
+        return "<h1> Specify a valid query field: one of {} </h1>".format(str(fields))
+
+    docs = index.get_documents_for_query(field, query)
+    return get_html_for_docs(docs)

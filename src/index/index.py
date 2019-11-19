@@ -4,7 +4,8 @@ import json
 
 from math import log
 from functools import reduce
-from index.document import IndexDocument
+from index.document import IndexDocument, QueryDocument, DocumentVector
+from utils.tokenizer import tokenize
 
 
 class Index:
@@ -80,6 +81,41 @@ class Index:
     def find_documents(self, field: str, term: str) -> [IndexDocument]:
         postings = self.find(field, term)[1]
         return self.get_documents([posting[0] for posting in postings])
+
+    def get_documents_for_query(self, field: str, query: str) -> [IndexDocument]:
+        # separa cada termo da consulta
+        terms = tokenize(query.lower())
+
+        # busca todos os documentos para cada termo da consulta
+        docs = [self.find_documents(field, term) for term in terms]
+
+        # deixa a lista de documentos flat, i.e., em uma lista (antes numa matriz)
+        docs = reduce(lambda acc, v: acc+v, docs, [])
+
+        # Transforma cada documento em um vetor
+        docs_vectors = [DocumentVector(doc, self) for doc in docs]
+
+        # Transforma termos da consulta no documento da consulta
+        query_doc = QueryDocument(None, terms)
+
+        # Transforma o documento da consulta em um vetor no espaço da consulta
+        query_vector = DocumentVector(query_doc, self)
+
+        # Para cada vetor de documento, projetamos ele no espaço da consulta
+        for doc_vector in docs_vectors:
+            doc_vector.project(query_vector)
+
+        # Computamos a similiridade com o vetor de consulta de cada documento e associamos ao mesmo documento para recupera-los depois
+        docs_score_vectors = [(query_vector.similarity(doc_vector), doc_vector) for doc_vector in docs_vectors]
+
+        # Ordenamos de acordo com o score (crescente)
+        docs_score_vectors.sort()
+
+        # Invertemos a ordem dos documentos para ter docs com scores altos primeiro
+        docs_score_vectors.reverse()
+
+        # Descartamos o score e ficamos somente com os documentos
+        return [d[1].doc for d in docs_score_vectors]
 
 
 if __name__ == "__main__":
