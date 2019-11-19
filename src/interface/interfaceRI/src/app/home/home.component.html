@@ -1,0 +1,54 @@
+<div class="container">
+  <h1 style="text-align: center">Player Search</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             [(ngModel)]="nomeConsulta" name="name">
+    </div>
+
+    <!--
+      <div class="form-group">
+        <label for="idade">Age</label>
+        <input type="text" class="form-control" id="idade"
+               [(ngModel)]="idadeConsulta" name="idade">
+      </div>
+    -->
+
+    <div class="form-group">
+      <label for="posicao">Position</label>
+      <input type="text" class="form-control" id="posicao"
+             [(ngModel)]="posicaoConsulta" name="posicao">
+    </div>
+
+    <div class="form-group">
+      <label for="nacionalidade">Nacionality</label>
+      <input type="text" class="form-control" id="nacionalidade"
+             [(ngModel)]="nacionalidadeConsulta" name="nacionalidade">
+    </div>
+
+    <div class="form-group">
+      <label for="numero">Number</label>
+      <input type="text" class="form-control" id="numero"
+             [(ngModel)]="numeroConsulta" name="numero">
+    </div>
+
+    <div class="form-group">
+      <label for="equipe">Team</label>
+      <input type="text" class="form-control" id="equipe"
+             [(ngModel)]="equipeConsulta" name="equipe">
+    </div>
+
+    <div class="form-group">
+      <label for="pernaChute">Kicking Leg</label>
+      <select class="form-control" id="pernaChute" [(ngModel)]="pernaChuteConsulta" name="kicking leg">
+        <option *ngFor="let item of opcoesPernaChute" [value]="item">{{item}}</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-success btn-block">Submit</button>
+    <!--
+    <button type="button" class="btn btn-default" (click)="playerForm.reset()">New Hero</button>
+    -->
+  </form>
+</div>
