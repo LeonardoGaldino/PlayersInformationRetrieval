@@ -102,6 +102,7 @@ class IndexDocument(BaseDocument):
         self.nationality = self.raw.get('nationality', None)
         self.team = self.raw.get('team', None)
         self.foot = self.raw.get('foot', None)
+        self.text = self.raw.get('text', None)
 
     def get_terms(self):
         tokenized_text = list(map(tokenizer.tokenize, [self.name, self.number, self.position, self.nationality, self.team, self.foot]))
