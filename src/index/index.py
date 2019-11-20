@@ -39,7 +39,6 @@ class Index:
             self.load_freq_index(index_file)
 
     def load_freq_index(self, file):
-        c = 0
         for line in file:
             field = line.split("//")[0]
             vocabulary = line.split("//")[1]
@@ -99,7 +98,8 @@ class Index:
         terms = tokenize(query.lower(), True)
 
         # Remove stopwords da consulta
-        terms = list(filter(lambda term: not term in stopwords, terms))
+        if field != 'foot':
+            terms = list(filter(lambda term: not term in stopwords, terms))
 
         # Busca todos os documentos para cada termo da consulta
         docs = [self.find_documents(field, term) for term in terms]
