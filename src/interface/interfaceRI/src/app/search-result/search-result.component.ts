@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RiServiceService } from '../ri-service.service';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { timeInterval } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-result',
@@ -23,7 +24,7 @@ export class SearchResultComponent implements OnInit {
     }
   }
 
-  toggleClicked() {
+  toggleClicked(): void {
     this.tfIdf = !this.tfIdf;
     let query = this.dataService.getQuery();
     let searchParam = 'tfidf=';
@@ -38,25 +39,39 @@ export class SearchResultComponent implements OnInit {
     this.loadResults();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadResults();
   }
 
-  loadResults() {
+  getSecondsDifference(requestBeginMilli: number): number {
+    let requestEndMilli = (new Date()).getTime();
+    return (requestEndMilli-requestBeginMilli)/1000.0;
+  }
+
+  updateResponseTime(requestBeginMilli: number): void {
+    let time = this.getSecondsDifference(requestBeginMilli);
+    document.getElementById("responseTimeHeader").innerHTML = `Response time: ${time.toString()} seconds.`;
+  }
+
+  loadResults(): void {
     let query = this.dataService.getQuery();
     document.getElementById("toFill").innerHTML = "";
+    document.getElementById("responseTimeHeader").innerHTML = "";
     this.isLoading = true;
-    this.riService.getHTMLForSearch(query).subscribe(resp=>{
+    let requestBeginMilli = (new Date()).getTime();
+    this.riService.getHTMLForSearch(query).subscribe(resp => {
+      this.isLoading = false;
       if(resp.obj._body=="")this.noResults=true;
       else document.getElementById("toFill").innerHTML = resp.obj._body;
-      this.isLoading = false;
+      this.updateResponseTime(requestBeginMilli);
     },error=>{
       this.isLoading=false;
       this.hasErrors=true;
+      this.updateResponseTime(requestBeginMilli);
     });
   }
 
-  goBack(){
+  goBack(): void {
     this.router.navigate(['/']);
   }
 
