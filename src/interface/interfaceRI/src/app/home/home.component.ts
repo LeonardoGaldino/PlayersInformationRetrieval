@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
   equipeConsulta="";
   pernaChuteConsulta="";
   pesquisaGenerica="";
+  tfIdf=true;
+
+  toggleClicked() {
+    this.tfIdf = !this.tfIdf;
+  }
 
   onSubmit(){
     var queryParams = "";
@@ -40,6 +45,7 @@ export class HomeComponent implements OnInit {
     else{
       if(this.pesquisaGenerica!="")qp.term = this.pesquisaGenerica;
     }
+    qp.tfidf = this.tfIdf ? "1" : "0";
 
     this.dataService.storeQuery(Utilities.paramsObjToStr(qp));
     this.router.navigate(['/search'], {queryParams: qp});

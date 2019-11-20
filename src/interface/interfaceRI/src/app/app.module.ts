@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RiServiceService } from './ri-service.service';
 import { DataService } from './data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DataService } from './data.service';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [RiServiceService,DataService],
   bootstrap: [AppComponent]
