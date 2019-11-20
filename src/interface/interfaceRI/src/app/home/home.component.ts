@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       if(this.nacionalidadeConsulta!="")qp.nacionality = this.nacionalidadeConsulta;
       if(this.numeroConsulta!="")qp.number = this.numeroConsulta;
       if(this.equipeConsulta!="")qp.team = this.equipeConsulta;
-      if(this.pernaChuteConsulta!="")qp.leg = this.pernaChuteConsulta;
+      if(this.pernaChuteConsulta!="")qp.foot = this.pernaChuteConsulta;
     }
     else{
       if(this.pesquisaGenerica!="")qp.term = this.pesquisaGenerica;
