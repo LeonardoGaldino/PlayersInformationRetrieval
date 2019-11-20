@@ -10,15 +10,17 @@ import { Router } from '@angular/router';
 })
 export class SearchResultComponent implements OnInit {
 
+  noResults = false;
+  hasErrors = false;
   constructor(private router: Router,private riService:RiServiceService, private dataService: DataService) { }
 
   ngOnInit() {
     let query = this.dataService.getQuery();
     this.riService.getHTMLForSearch(query).subscribe(resp=>{
-      if(resp.obj._body=="")document.getElementById("toFill").innerHTML = "<span>nenhum resultado</span>";
+      if(resp.obj._body=="")this.noResults=true;
       else document.getElementById("toFill").innerHTML = resp.obj._body;
     },error=>{
-      document.getElementById("toFill").innerHTML = "<span>Erro</span>";
+      this.hasErrors=true;
     })
   }
 
