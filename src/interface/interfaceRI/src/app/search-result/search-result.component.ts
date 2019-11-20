@@ -12,6 +12,7 @@ export class SearchResultComponent implements OnInit {
 
   noResults = false;
   hasErrors = false;
+  isLoading = true;
   constructor(private router: Router,private riService:RiServiceService, private dataService: DataService) { }
 
   ngOnInit() {
@@ -19,7 +20,9 @@ export class SearchResultComponent implements OnInit {
     this.riService.getHTMLForSearch(query).subscribe(resp=>{
       if(resp.obj._body=="")this.noResults=true;
       else document.getElementById("toFill").innerHTML = resp.obj._body;
+      this.isLoading = false;
     },error=>{
+      this.isLoading=false;
       this.hasErrors=true;
     })
   }
