@@ -3,6 +3,9 @@
       <div style="margin-left: 20px; margin-top: 10px" class="col">
         <button (click)="goBack()" class="btn btn-success">back</button>
       </div>
+      <mat-slide-toggle (change)="toggleClicked()" [checked]="tfIdf" style="margin-top: 10px; margin-left: 20px;">
+          <span style="font-weight: 700;">TF-IDF on vector model</span>
+        </mat-slide-toggle>
       <div class="col">
         <h1 style="text-align: center;border-bottom: 1px solid gray">Results</h1>
       </div> 

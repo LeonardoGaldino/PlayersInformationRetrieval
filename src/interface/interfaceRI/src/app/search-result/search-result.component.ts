@@ -13,10 +13,39 @@ export class SearchResultComponent implements OnInit {
   noResults = false;
   hasErrors = false;
   isLoading = true;
-  constructor(private router: Router,private riService:RiServiceService, private dataService: DataService) { }
+  tfIdf = true;
+
+  constructor(private router: Router,private riService:RiServiceService, private dataService: DataService) {
+    let query = dataService.getQuery();
+    if(query.indexOf('tfidf=') !== -1) {
+      let tfIdfRaw = dataService.getQuery().split('tfidf=')[1][0];
+      this.tfIdf = tfIdfRaw == "0" ? false : true;
+    }
+  }
+
+  toggleClicked() {
+    this.tfIdf = !this.tfIdf;
+    let query = this.dataService.getQuery();
+    let searchParam = 'tfidf=';
+    let tfIdfRaw = this.tfIdf ? "1" : "0";
+    let idx = query.indexOf(searchParam) + searchParam.length;
+    if(idx === -1) {
+      this.dataService.storeQuery(query + "&" + searchParam + tfIdfRaw);
+    } else {
+      let newQuery = query.substr(0, idx) + tfIdfRaw + query.substr(idx+1);
+      this.dataService.storeQuery(newQuery);
+    }
+    this.loadResults();
+  }
 
   ngOnInit() {
+    this.loadResults();
+  }
+
+  loadResults() {
     let query = this.dataService.getQuery();
+    document.getElementById("toFill").innerHTML = "";
+    this.isLoading = true;
     this.riService.getHTMLForSearch(query).subscribe(resp=>{
       if(resp.obj._body=="")this.noResults=true;
       else document.getElementById("toFill").innerHTML = resp.obj._body;
@@ -24,7 +53,7 @@ export class SearchResultComponent implements OnInit {
     },error=>{
       this.isLoading=false;
       this.hasErrors=true;
-    })
+    });
   }
 
   goBack(){
