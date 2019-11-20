@@ -46,9 +46,12 @@ export class HomeComponent implements OnInit {
       if(this.pesquisaGenerica!="")qp.term = this.pesquisaGenerica;
     }
     qp.tfidf = this.tfIdf ? "1" : "0";
-
-    this.dataService.storeQuery(Utilities.paramsObjToStr(qp));
-    this.router.navigate(['/search'], {queryParams: qp});
+    if(Object.keys(qp).length > 1) {
+      this.dataService.storeQuery(Utilities.paramsObjToStr(qp));
+      this.router.navigate(['/search'], {queryParams: qp});
+    } else {
+      alert("Preencha algum campo de consulta.")
+    }
   }
 
 }
