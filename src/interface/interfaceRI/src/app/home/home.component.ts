@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       if(this.nomeConsulta!="")qp.name = this.nomeConsulta;
       //if(this.idadeConsulta!="")qp.age = this.idadeConsulta;
       if(this.posicaoConsulta!="")qp.position = this.posicaoConsulta;
-      if(this.nacionalidadeConsulta!="")qp.nacionality = this.nacionalidadeConsulta;
+      if(this.nacionalidadeConsulta!="")qp.nationality = this.nacionalidadeConsulta;
       if(this.numeroConsulta!="")qp.number = this.numeroConsulta;
       if(this.equipeConsulta!="")qp.team = this.equipeConsulta;
       if(this.pernaChuteConsulta!="")qp.foot = this.pernaChuteConsulta;
