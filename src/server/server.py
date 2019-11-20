@@ -15,7 +15,7 @@ index.load()
 fields = ['term', 'name', 'position', 'nationality', 'number', 'team', 'foot']
 
 document_anchor_HTML = """
-    <div class="card" style="width: 677px;height: 93px;margin-left: 166px;margin-bottom: 27px">
+    <div class="card" style="height: 93px;margin-left: 166px;margin-bottom: 27px">
         <div class="card-body">
             <a class="card-title" href={} style="margin-bottom: 0px;color: #1a0dab;font-size: 20px;
                 font-weight: 400;line-height: 26px;font-family:arial,sans-serif">
