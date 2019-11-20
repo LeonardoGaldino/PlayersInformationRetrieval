@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 style="text-align: center">Player Search</h1>
+  <h1 style="text-align: center">Football Player Search</h1>
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="generica">Generic search</label>
@@ -50,6 +50,12 @@
       <select class="form-control" id="pernaChute" [(ngModel)]="pernaChuteConsulta" name="kicking leg">
         <option *ngFor="let item of opcoesPernaChute" [value]="item">{{item}}</option>
       </select>
+    </div>
+
+    <div class="form-group">
+        <label for="responseSize">Max. number of documents</label>
+        <input type="number" class="form-control" id="responseSizeInput"
+               [(ngModel)]="responseSize" name="responseSize">
     </div>
 
     <mat-slide-toggle (change)="toggleClicked()" checked="true" style="margin-bottom: 10px;">

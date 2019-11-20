@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   equipeConsulta="";
   pernaChuteConsulta="";
   pesquisaGenerica="";
+  responseSize = 10;
   tfIdf=true;
 
   toggleClicked() {
@@ -46,7 +47,8 @@ export class HomeComponent implements OnInit {
       if(this.pesquisaGenerica!="")qp.term = this.pesquisaGenerica;
     }
     qp.tfidf = this.tfIdf ? "1" : "0";
-    if(Object.keys(qp).length > 1) {
+    qp.max_size = this.responseSize
+    if(Object.keys(qp).length > 2) {
       this.dataService.storeQuery(Utilities.paramsObjToStr(qp));
       this.router.navigate(['/search'], {queryParams: qp});
     } else {
