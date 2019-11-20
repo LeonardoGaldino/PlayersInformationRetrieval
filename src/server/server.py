@@ -36,7 +36,12 @@ document_anchor_HTML = """
     </div>'
 """
 
-def extract_req_params(req: Request) -> (str, str, bool):
+def extract_req_params(req: Request) -> (str, str, int, bool):
+    try:
+        max_size = int(req.args.get('max_size', '10'))
+    except:
+        max_size = 10
+
     tf_idf = not req.args.get('tfidf', '1') == '0'
 
     field, query = None, None
@@ -47,7 +52,7 @@ def extract_req_params(req: Request) -> (str, str, bool):
             query = req.args.get(_field)
             break
 
-    return field, query, tf_idf
+    return field, query, max_size, tf_idf
 
 def get_html_for_docs(docs: [IndexDocument]) -> str:
     for doc in docs:
@@ -73,12 +78,12 @@ def hello_world():
     if request.method == 'OPTIONS':
         return response
 
-    field, query, tf_idf = extract_req_params(request)
+    field, query, max_size, tf_idf = extract_req_params(request)
     if field is None or query is None:
         response.status = "400"
         response.data = "<h1> Specify a valid query field: one of {} </h1>".format(str(fields))
     else:
-        docs = index.get_documents_for_query(field, query, tf_idf)
+        docs = index.get_documents_for_query(field, query, max_size, tf_idf)
         response.data = get_html_for_docs(docs)
         response.status = "200"
 

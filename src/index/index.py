@@ -93,7 +93,7 @@ class Index:
         postings = self.find(field, term)[1]
         return self.get_documents([posting[0] for posting in postings])
 
-    def get_documents_for_query(self, field: str, query: str, tf_idf: bool = True) -> [IndexDocument]:
+    def get_documents_for_query(self, field: str, query: str, max_size: int = 10, tf_idf: bool = True) -> [IndexDocument]:
         # Separa cada termo da consulta
         terms = tokenize(query.lower(), True)
 
@@ -135,7 +135,7 @@ class Index:
         docs_score_vectors.reverse()
 
         # Descartamos o score e ficamos somente com os documentos
-        return [d[1].doc for d in docs_score_vectors]
+        return [d[1].doc for d in docs_score_vectors][:max_size]
 
 
 if __name__ == "__main__":
