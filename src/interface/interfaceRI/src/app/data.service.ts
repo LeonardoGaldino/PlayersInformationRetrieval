@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class DataService {
   private query = "";
   
-  constructor() { }
+  constructor() {
+    this.query = window.location.search
+  }
 
   storeQuery(q:string){
     this.query=q;
@@ -17,7 +19,7 @@ export class DataService {
   }
 
   clearQuery(){
-    this.query=undefined;
+    this.query="";
   }
 
 }
