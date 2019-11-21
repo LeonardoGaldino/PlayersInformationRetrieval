@@ -1,19 +1,19 @@
 <div class="container">
   <h1 style="text-align: center">Football Player Search</h1>
-  <form (ngSubmit)="onSubmit()">
+  <form >
     <div class="form-group">
       <label for="generica">Generic search</label>
       <input type="text" (focus)="onFocus('generic')" class="form-control" id="generica"
               [(ngModel)]="pesquisaGenerica" name="generica">
       <div *ngIf="focusOnField=='generic'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{genericTopMutualInfo[0].value}}</button>
+            <button (click)="pesquisaGenerica=genericTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{genericTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{genericTopMutualInfo[1].value}}</button>
+            <button (click)="pesquisaGenerica=genericTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{genericTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{genericTopMutualInfo[2].value}}</button>
+            <button (click)="pesquisaGenerica=genericTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{genericTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -24,13 +24,13 @@
              [(ngModel)]="nomeConsulta" name="name">
       <div *ngIf="focusOnField=='name'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{namesTopMutualInfo[0].value}}</button>
+            <button (click)="nomeConsulta=namesTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{namesTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{namesTopMutualInfo[1].value}}</button>
+            <button (click)="nomeConsulta=namesTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{namesTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{namesTopMutualInfo[2].value}}</button>
+            <button (click)="nomeConsulta=namesTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{namesTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -49,13 +49,13 @@
              [(ngModel)]="posicaoConsulta" name="posicao">
       <div *ngIf="focusOnField=='position'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{positionTopMutualInfo[0].value}}</button>
+            <button (click)="posicaoConsulta=positionTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{positionTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{positionTopMutualInfo[1].value}}</button>
+            <button (click)="posicaoConsulta=positionTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{positionTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{positionTopMutualInfo[2].value}}</button>
+            <button (click)="posicaoConsulta=positionTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{positionTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -66,13 +66,13 @@
              [(ngModel)]="nacionalidadeConsulta" name="nacionalidade">
       <div *ngIf="focusOnField=='nationality'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[0].value}}</button>
+            <button (click)="nacionalidadeConsulta=nationalityTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[1].value}}</button>
+            <button (click)="nacionalidadeConsulta=nationalityTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[2].value}}</button>
+            <button (click)="nacionalidadeConsulta=nationalityTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{nationalityTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -83,13 +83,13 @@
              [(ngModel)]="numeroConsulta" name="numero">
       <div *ngIf="focusOnField=='number'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{numberTopMutualInfo[0].value}}</button>
+            <button (click)="numeroConsulta=numberTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{numberTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{numberTopMutualInfo[1].value}}</button>
+            <button (click)="numeroConsulta=numberTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{numberTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{numberTopMutualInfo[2].value}}</button>
+            <button (click)="numeroConsulta=numberTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{numberTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -100,13 +100,13 @@
              [(ngModel)]="equipeConsulta" name="equipe">
       <div *ngIf="focusOnField=='team'" class="row">
         <div class="col-md-4" style="padding-right: 0px;">
-            <button style="width:100%" class="btn btn-success">{{teamTopMutualInfo[0].value}}</button>
+            <button (click)="equipeConsulta=teamTopMutualInfo[0].value" style="width:100%" class="btn btn-success">{{teamTopMutualInfo[0].value}}</button>
         </div>
         <div class="col-md-4" style="padding-right: 0px;padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{teamTopMutualInfo[1].value}}</button>
+            <button (click)="equipeConsulta=teamTopMutualInfo[1].value" style="width:100%" class="btn btn-success">{{teamTopMutualInfo[1].value}}</button>
         </div>
         <div class="col-md-4" style="padding-left: 0px;">
-            <button style="width:100%" class="btn btn-success">{{teamTopMutualInfo[2].value}}</button>
+            <button (click)="equipeConsulta=teamTopMutualInfo[2].value" style="width:100%" class="btn btn-success">{{teamTopMutualInfo[2].value}}</button>
         </div>
       </div>
     </div>
@@ -128,7 +128,7 @@
       <span style="font-weight: 700;">TF-IDF on vector model</span>
     </mat-slide-toggle>
 
-    <button type="submit" class="btn btn-success btn-block">Submit</button>
+    <button (click)="onSubmit()" type="submit" class="btn btn-success btn-block">Submit</button>
     <!--
     <button type="button" class="btn btn-default" (click)="playerForm.reset()">New Hero</button>
     -->
